@@ -94,10 +94,9 @@
   section{padding:44px 0}
 
   /* ---------- hero ---------- */
-  .hero{display:grid; gap:28px; padding:36px 0 32px; align-items:center}
+  .hero{display:grid; gap:26px; padding:36px 0 28px}
   @media(min-width:820px){
-    .hero{grid-template-columns:1fr .9fr; gap:56px; padding:56px 0 48px}
-    .hero-art{order:-1}
+    .hero{gap:34px; padding:48px 0 40px}
   }
   .hero h1{font-size:clamp(2.1rem, 5.2vw, 3.5rem)}
   .hero-rating{margin-top:12px; font-size:.85rem; color:var(--ink-2)}
@@ -117,9 +116,18 @@
   .btn-primary:hover{background:var(--accent-deep)}
   .btn-ghost{border-color:var(--line); color:var(--ink); background:transparent}
   .btn-ghost:hover{border-color:var(--accent)}
-  .hero-art{background:linear-gradient(160deg, var(--art1), var(--art2)); border-radius:18px; padding:0; overflow:hidden; aspect-ratio:4/5; box-shadow:var(--shadow); max-width:420px}
+  /* full-width landscape hero image, sits under the stat row */
+  .hero-art{background:linear-gradient(160deg, var(--art1), var(--art2)); border-radius:18px; padding:0; overflow:hidden; aspect-ratio:21/9; box-shadow:var(--shadow); width:100%}
   .hero-art img{width:100%; height:100%; object-fit:cover}
-  @media(max-width:819px){ .hero-art{max-width:320px; width:100%; margin:0 auto} }
+  @media(max-width:600px){ .hero-art{aspect-ratio:16/10; border-radius:14px} }
+  /* ---------- marquee ticker ---------- */
+  .ticker{border-block:1px solid var(--line); padding:13px 0; overflow:hidden; white-space:nowrap}
+  .ticker-inner{display:inline-flex; gap:48px; padding-right:48px; animation:slide 32s linear infinite}
+  @keyframes slide{to{transform:translateX(-50%)}}
+  @media(prefers-reduced-motion:reduce){ .ticker-inner{animation:none} }
+  .ticker span{font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-2)}
+  .ticker b{color:var(--accent); font-weight:600}
+
   .hero-meta{display:flex; gap:28px; margin-top:28px; padding-top:18px; border-top:1px solid var(--line); flex-wrap:wrap}
   .hero-meta div{font-size:.78rem; color:var(--ink-2); max-width:15ch}
   .hero-meta strong{display:block; color:var(--accent); font-size:1.2rem; font-family:Didot,"Bodoni MT",Georgia,serif; font-weight:400; font-variant-numeric:tabular-nums}
@@ -464,44 +472,32 @@
   .btn-primary:hover::after{animation:shine .65s var(--ease) forwards}
   @keyframes shine{to{transform:skewX(-20deg) translateX(560%)}}
 
-  /* showcase card fan (:has() hover choreography) */
-  .fan-stage{display:grid; place-items:center; min-height:320px}
-  .fan{position:relative; width:170px; height:230px}
-  .fan-card{
-    position:absolute; inset:0; background:linear-gradient(170deg, var(--art1), var(--art2)); border:1px solid var(--line); border-radius:16px;
-    padding:0; overflow:hidden; cursor:pointer; box-shadow:0 8px 26px rgba(37,42,49,.09);
-    transform:rotate(var(--r)) translate(var(--x), var(--y));
-    transition:transform .25s var(--ease), opacity .25s var(--ease), box-shadow .25s var(--ease);
+  /* routine carousel — 4 rotating product slides, tap/click opens the product */
+  .caro{
+    position:relative; width:100%; max-width:400px; aspect-ratio:4/5; margin:0 auto;
+    border-radius:18px; overflow:hidden; box-shadow:var(--shadow);
+    background:linear-gradient(170deg, var(--art1), var(--art2));
   }
-  .fan-card svg{height:100%; width:100%}
-  .fan-card img{height:100%; width:100%; object-fit:cover; display:block}
-  .fan-card:nth-child(1){--r:-14deg; --x:-124px; --y:26px; z-index:1}
-  .fan-card:nth-child(2){--r:-7deg;  --x:-62px;  --y:8px;  z-index:2}
-  .fan-card:nth-child(3){--r:0deg;   --x:0px;    --y:0px;  z-index:3; animation:anchor .8s var(--ease-lux)}
-  .fan-card:nth-child(4){--r:7deg;   --x:62px;   --y:8px;  z-index:2}
-  .fan-card:nth-child(5){--r:14deg;  --x:124px;  --y:26px; z-index:1}
-  @keyframes anchor{from{transform:perspective(700px) rotateX(20deg) scale(.9); opacity:0}}
-  .fan:hover .fan-card{transform:rotate(var(--r)) translate(var(--x), calc(var(--y) - 8px))}
-  .fan:has(.fan-card:hover) .fan-card:not(:hover){opacity:.5}
-  .fan .fan-card:hover{
-    transform:rotate(0deg) translate(var(--x), calc(var(--y) - 14px)) scale(1.08); z-index:6; opacity:1;
-    box-shadow:0 0 0 2px var(--gold), 0 18px 44px rgba(37,42,49,.16);
+  @media(max-width:819px){ .caro{max-width:360px; aspect-ratio:1/1} }
+  .caro-slide{
+    position:absolute; inset:0; border:none; padding:0; cursor:pointer; background:none;
+    opacity:0; transition:opacity .55s var(--ease-lux); pointer-events:none;
   }
-  /* fan must fit its column at every width — tiers prevent clipping/overlap */
-  @media(min-width:820px) and (max-width:1099px){
-    .fan{width:138px; height:188px}
-    .fan-card:nth-child(1){--x:-98px; --y:20px} .fan-card:nth-child(2){--x:-49px}
-    .fan-card:nth-child(4){--x:49px}  .fan-card:nth-child(5){--x:98px; --y:20px}
+  .caro-slide.on{opacity:1; pointer-events:auto}
+  .caro-slide img{width:100%; height:100%; object-fit:cover; display:block}
+  .caro-slide::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(20,25,34,0) 55%, rgba(20,25,34,.38)); pointer-events:none}
+  .caro-tag{
+    position:absolute; left:14px; bottom:40px; z-index:1;
+    background:rgba(255,255,255,.92); color:#252A31; border-radius:99px;
+    padding:7px 14px; font-size:.74rem; font-weight:600; letter-spacing:.04em;
   }
-  /* touch screens can't hover a fan — become a swipeable card row */
-  @media (hover:none), (max-width:700px){
-    .fan-stage{min-height:0; place-items:stretch}
-    .fan{width:auto; height:auto; display:flex; gap:12px; overflow-x:auto; padding:6px 2px 14px;
-         scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch}
-    .fan::-webkit-scrollbar{display:none}
-    .fan-card{position:relative; inset:auto; flex:0 0 118px; height:158px;
-              transform:none !important; scroll-snap-align:center; animation:none; opacity:1 !important}
+  .caro-dots{position:absolute; left:0; right:0; bottom:13px; display:flex; gap:8px; justify-content:center; z-index:2}
+  .caro-dots button{
+    width:8px; height:8px; border-radius:99px; border:none; padding:0; cursor:pointer;
+    background:rgba(255,255,255,.55); box-shadow:0 0 0 1px rgba(0,0,0,.12);
+    transition:transform .2s var(--ease), background .2s var(--ease);
   }
+  .caro-dots button[aria-current="true"]{background:#fff; transform:scale(1.35)}
 
   /* routine spotlight (count-up price) */
   .spotlight{display:grid; gap:28px; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:20px; padding:30px 22px}
@@ -618,6 +614,15 @@
     </div>
   </section>
 
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-inner">
+      <span>Dermatologist tested</span><span>·</span><span><b>Clinically measured</b> at 8 weeks</span><span>·</span><span>Fragrance-free, always</span><span>·</span><span>Free shipping over $75</span><span>·</span><span>60-day results guarantee</span><span>·</span>
+      <span>Dermatologist tested</span><span>·</span><span><b>Clinically measured</b> at 8 weeks</span><span>·</span><span>Fragrance-free, always</span><span>·</span><span>Free shipping over $75</span><span>·</span><span>60-day results guarantee</span><span>·</span>
+      <span>Dermatologist tested</span><span>·</span><span><b>Clinically measured</b> at 8 weeks</span><span>·</span><span>Fragrance-free, always</span><span>·</span><span>Free shipping over $75</span><span>·</span><span>60-day results guarantee</span><span>·</span>
+      <span>Dermatologist tested</span><span>·</span><span><b>Clinically measured</b> at 8 weeks</span><span>·</span><span>Fragrance-free, always</span><span>·</span><span>Free shipping over $75</span><span>·</span><span>60-day results guarantee</span><span>·</span>
+    </div>
+  </div>
+
   <section id="shelf">
     <div class="sec-head">
       <div>
@@ -650,7 +655,7 @@
 
   <section id="spot">
     <div class="spotlight">
-      <div class="fan-stage"><div class="fan" id="fan" role="group" aria-label="The routine lineup — click a product to view it"></div></div>
+      <div class="caro" id="caro" role="group" aria-roledescription="carousel" aria-label="The four-step routine — tap a product to view it"></div>
       <div class="spot-copy">
         <span class="eyebrow">The complete routine</span>
         <h2>Four steps. <em>One box.</em></h2>
@@ -1324,18 +1329,44 @@ renderCart();
 /* ---------- motion layer (21st.dev effects, vanilla port) ---------- */
 const RM = matchMedia("(prefers-reduced-motion: reduce)");
 
-/* showcase card fan — click any card to open its PDP */
-const fanWrap = document.getElementById("fan");
-if(fanWrap){
-  ["cleanser","eye","serum","cream","spf"].forEach((id,i)=>{
+/* routine carousel — 4 slides auto-rotate; tap/click opens the product */
+const caro = document.getElementById("caro");
+if(caro){
+  const STEPS = [["cleanser","Step 01 · Cleanse"],["serum","Step 02 · Treat"],["eye","Step 03 · Eyes"],["cream","Step 04 · Seal"]];
+  STEPS.forEach(([id,label],i)=>{
     const p = FIND(id);
     const b = document.createElement("button");
-    b.className = "fan-card";
+    b.className = "caro-slide" + (i===0 ? " on" : "");
     b.setAttribute("aria-label","View "+p.name);
-    b.innerHTML = pic(id,0,p.name);
+    b.innerHTML = pic(id,0,p.name) + `<span class="caro-tag">${label}</span>`;
     b.addEventListener("click",()=>openProduct(id));
-    fanWrap.appendChild(b);
+    caro.appendChild(b);
   });
+  const dots = document.createElement("div");
+  dots.className = "caro-dots";
+  STEPS.forEach((_,i)=>{
+    const d = document.createElement("button");
+    d.setAttribute("aria-label","Show slide "+(i+1));
+    d.addEventListener("click",()=>show(i,true));
+    dots.appendChild(d);
+  });
+  caro.appendChild(dots);
+  const slides = caro.querySelectorAll(".caro-slide");
+  const dbs = dots.querySelectorAll("button");
+  let ci = 0, caroTimer;
+  function show(i, manual){
+    ci = (i + STEPS.length) % STEPS.length;
+    slides.forEach((s,j)=>s.classList.toggle("on", j===ci));
+    dbs.forEach((d,j)=>d.setAttribute("aria-current", j===ci ? "true":"false"));
+    if(manual) caroRestart();
+  }
+  function caroRestart(){
+    clearInterval(caroTimer);
+    if(!RM.matches) caroTimer = setInterval(()=>show(ci+1), 3800);
+  }
+  show(0); caroRestart();
+  caro.addEventListener("pointerenter",()=>clearInterval(caroTimer));
+  caro.addEventListener("pointerleave",caroRestart);
 }
 
 /* count-up price — animates once when scrolled into view */
@@ -1369,9 +1400,9 @@ const revIO = new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el=>revIO.observe(el));
 
-/* hero + banner photography */
+/* hero + banner photography — wide landscape crop for the full-width hero */
 document.querySelector(".hero-art").innerHTML =
-  `<img src="${UN("photo-1552046122-03184de85e08")}" alt="Model holding an Éterne serum bottle" fetchpriority="high">`;
+  `<img src="https://images.unsplash.com/photo-1552046122-03184de85e08?w=1600&q=80&auto=format&fit=crop" alt="Skincare products arranged on a table" fetchpriority="high">`;
 
 /* sticky mobile CTA — appears once the hero scrolls away, home view only */
 const sCta = document.getElementById("stickyCta");
