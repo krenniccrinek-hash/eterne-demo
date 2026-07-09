@@ -498,6 +498,18 @@
     transition:transform .2s var(--ease), background .2s var(--ease);
   }
   .caro-dots button[aria-current="true"]{background:#fff; transform:scale(1.35)}
+  .caro{touch-action:pan-y; user-select:none}
+  .caro-slide img{-webkit-user-drag:none; user-select:none; pointer-events:none}
+  .caro-arrow{
+    position:absolute; top:50%; transform:translateY(-50%); z-index:2;
+    width:38px; height:38px; border-radius:99px; border:none; cursor:pointer;
+    display:grid; place-items:center; background:rgba(255,255,255,.88); color:#252A31;
+    box-shadow:0 4px 14px rgba(0,0,0,.18); transition:background .15s var(--ease);
+  }
+  .caro-arrow:hover{background:#fff}
+  .caro-arrow:active{transform:translateY(-50%) scale(.92)}
+  .caro-arrow.prev{left:10px}
+  .caro-arrow.next{right:10px}
 
   /* routine spotlight (count-up price) */
   .spotlight{display:grid; gap:28px; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:20px; padding:30px 22px}
@@ -1339,7 +1351,7 @@ if(caro){
     b.className = "caro-slide" + (i===0 ? " on" : "");
     b.setAttribute("aria-label","View "+p.name);
     b.innerHTML = pic(id,0,p.name) + `<span class="caro-tag">${label}</span>`;
-    b.addEventListener("click",()=>openProduct(id));
+    b.addEventListener("click",()=>{ if(swiped){ swiped=false; return; } openProduct(id); });
     caro.appendChild(b);
   });
   const dots = document.createElement("div");
@@ -1364,6 +1376,24 @@ if(caro){
     clearInterval(caroTimer);
     if(!RM.matches) caroTimer = setInterval(()=>show(ci+1), 3800);
   }
+  /* prev/next arrows */
+  [[-1,"prev","Previous product","M15 5l-7 7 7 7"],[1,"next","Next product","M9 5l7 7-7 7"]].forEach(([dir,cls,label,path])=>{
+    const a = document.createElement("button");
+    a.className = "caro-arrow " + cls;
+    a.setAttribute("aria-label", label);
+    a.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${path}"/></svg>`;
+    a.addEventListener("click", e=>{ e.stopPropagation(); show(ci+dir, true); });
+    caro.appendChild(a);
+  });
+  /* swipe / drag to change slides (click still opens the product) */
+  let swiped = false, sx = null;
+  caro.addEventListener("pointerdown", e=>{ sx = e.clientX; swiped = false; });
+  caro.addEventListener("pointerup", e=>{
+    if(sx === null) return;
+    const dx = e.clientX - sx; sx = null;
+    if(Math.abs(dx) > 40){ swiped = true; show(ci + (dx < 0 ? 1 : -1), true); }
+  });
+  caro.addEventListener("pointercancel", ()=>{ sx = null; });
   show(0); caroRestart();
   caro.addEventListener("pointerenter",()=>clearInterval(caroTimer));
   caro.addEventListener("pointerleave",caroRestart);
