@@ -1,0 +1,1276 @@
+<title>ÉTERNE — Clinical Anti-Aging Skincare</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --paper:#FAF7F0; --card:#FFFFFF; --wash:#F3EEE2; --accent-soft:#E9EEF5;
+    --art1:#EFE8D9; --art2:#DED2BA;
+    --ink:#252A31; --ink-2:#7B7A6F; --line:#E7E1D3;
+    --accent:#24466B; --accent-deep:#18324E; --gold:#AD8A4B; --accent-contrast:#FFFFFF;
+    --shadow:0 16px 44px rgba(37,42,49,.08);
+    --ok:#4C7A4C;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#171C24; --card:#1F2632; --wash:#242C39; --accent-soft:#2A3547;
+      --art1:#28303E; --art2:#1E2530;
+      --ink:#EEF0F4; --ink-2:#A3A8B3; --line:#333D4D;
+      --accent:#8FB4DC; --accent-deep:#A9C6E7; --gold:#D2B47E; --accent-contrast:#141922;
+      --shadow:0 16px 44px rgba(0,0,0,.45);
+      --ok:#8CBA8C;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#171C24; --card:#1F2632; --wash:#242C39; --accent-soft:#2A3547;
+    --art1:#28303E; --art2:#1E2530;
+    --ink:#EEF0F4; --ink-2:#A3A8B3; --line:#333D4D;
+    --accent:#8FB4DC; --accent-deep:#A9C6E7; --gold:#D2B47E; --accent-contrast:#141922;
+    --shadow:0 16px 44px rgba(0,0,0,.45);
+    --ok:#8CBA8C;
+  }
+  :root[data-theme="light"]{
+    --paper:#FAF7F0; --card:#FFFFFF; --wash:#F3EEE2; --accent-soft:#E9EEF5;
+    --art1:#EFE8D9; --art2:#DED2BA;
+    --ink:#252A31; --ink-2:#7B7A6F; --line:#E7E1D3;
+    --accent:#24466B; --accent-deep:#18324E; --gold:#AD8A4B; --accent-contrast:#FFFFFF;
+    --shadow:0 16px 44px rgba(37,42,49,.08);
+    --ok:#4C7A4C;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Avenir Next","Segoe UI",system-ui,sans-serif;
+    font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased;
+    overflow-x:clip;
+  }
+  h1,h2,h3{
+    font-family:Didot,"Bodoni MT","Playfair Display","Iowan Old Style",Georgia,serif;
+    font-weight:400; line-height:1.14; margin:0; text-wrap:balance;
+  }
+  h1 em,h2 em{font-style:italic; color:var(--accent)}
+  .mono{font-family:ui-monospace,"Cascadia Code",Consolas,monospace; font-variant-numeric:tabular-nums}
+  .eyebrow{font-size:.68rem; letter-spacing:.24em; text-transform:uppercase; color:var(--accent); font-weight:600}
+  a{color:inherit} button{font:inherit; cursor:pointer}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  img,svg{max-width:100%; display:block}
+  input,select{font:inherit; color:var(--ink)}
+
+  /* ---------- announcement ---------- */
+  .announce{
+    background:var(--accent); color:var(--accent-contrast); text-align:center;
+    font-size:.76rem; letter-spacing:.1em; padding:8px 16px; font-weight:600;
+  }
+  .announce b{text-transform:uppercase}
+
+  /* ---------- header ---------- */
+  header{
+    position:sticky; top:0; z-index:40; background:color-mix(in srgb, var(--paper) 92%, transparent);
+    backdrop-filter:blur(12px); border-bottom:1px solid var(--line);
+  }
+  .bar{max-width:1180px; margin:0 auto; padding:0 20px; height:62px; display:flex; align-items:center; gap:24px}
+  .wordmark{font-family:Didot,"Bodoni MT",Georgia,serif; font-size:1.3rem; letter-spacing:.34em; text-decoration:none}
+  .wordmark span{color:var(--accent); letter-spacing:0}
+  nav{display:flex; gap:22px; margin-left:auto}
+  nav a{font-size:.88rem; text-decoration:none; color:var(--ink-2); padding:8px 2px}
+  nav a:hover{color:var(--ink)}
+  @media(max-width:700px){ nav{display:none} }
+  .bag-btn{
+    margin-left:auto; display:flex; align-items:center; gap:8px; background:none;
+    border:1px solid var(--line); border-radius:99px; padding:8px 16px; color:var(--ink); min-height:44px;
+  }
+  @media(min-width:701px){ .bag-btn{margin-left:0} }
+  .bag-btn:hover{border-color:var(--accent)}
+  .bag-count{
+    background:var(--accent); color:var(--accent-contrast); border-radius:99px;
+    font-size:.72rem; min-width:20px; height:20px; display:grid; place-items:center; font-weight:700; padding:0 5px;
+  }
+
+  main{max-width:1180px; margin:0 auto; padding:0 20px}
+  section{padding:56px 0}
+
+  /* ---------- hero ---------- */
+  .hero{display:grid; gap:36px; padding:48px 0 40px; align-items:center}
+  @media(min-width:820px){
+    .hero{grid-template-columns:.92fr 1.08fr; gap:64px; padding:76px 0 64px}
+    .hero-art{order:-1}
+  }
+  .hero h1{font-size:clamp(2.5rem, 6vw, 4.3rem)}
+  .hero p.lede{max-width:46ch; color:var(--ink-2); font-size:1.05rem; margin:22px 0 30px}
+  .cta-row{display:flex; gap:12px; flex-wrap:wrap}
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    border-radius:99px; padding:14px 30px; min-height:48px; font-weight:600; font-size:.93rem;
+    text-decoration:none; letter-spacing:.02em; border:1px solid transparent;
+    transition:transform .18s ease, background .18s ease, border-color .18s ease;
+  }
+  .btn:active{transform:scale(.97)}
+  .btn-primary{background:var(--accent); color:var(--accent-contrast)}
+  .btn-primary:hover{background:var(--accent-deep)}
+  .btn-ghost{border-color:var(--line); color:var(--ink); background:transparent}
+  .btn-ghost:hover{border-color:var(--accent)}
+  .hero-art{background:linear-gradient(160deg, var(--art1), var(--art2)); border-radius:20px; padding:9%; box-shadow:var(--shadow)}
+  .hero-meta{display:flex; gap:32px; margin-top:38px; padding-top:22px; border-top:1px solid var(--line); flex-wrap:wrap}
+  .hero-meta div{font-size:.8rem; color:var(--ink-2); max-width:15ch}
+  .hero-meta strong{display:block; color:var(--accent); font-size:1.5rem; font-family:Didot,"Bodoni MT",Georgia,serif; font-weight:400; font-variant-numeric:tabular-nums}
+
+  /* ---------- value props ---------- */
+  .props{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; border-block:1px solid var(--line); padding:26px 0}
+  @media(min-width:760px){ .props{grid-template-columns:repeat(4,1fr)} }
+  .prop{display:flex; align-items:center; gap:12px; font-size:.83rem; color:var(--ink-2)}
+  .prop svg{flex-shrink:0; color:var(--accent)}
+  .prop b{color:var(--ink); display:block; font-size:.87rem}
+
+  /* ---------- shelf / cards ---------- */
+  .sec-head{display:flex; align-items:end; justify-content:space-between; gap:16px; margin-bottom:30px}
+  .sec-head h2{font-size:clamp(1.7rem,3.6vw,2.3rem)}
+  .sec-head .more{font-size:.88rem; color:var(--accent); text-decoration:none; border-bottom:1px solid currentColor; padding-bottom:2px; white-space:nowrap}
+  .grid3{display:grid; gap:22px}
+  @media(min-width:680px){ .grid3{grid-template-columns:repeat(3,1fr)} }
+  .grid4{display:grid; gap:20px; grid-template-columns:repeat(2,1fr)}
+  @media(min-width:820px){ .grid4{grid-template-columns:repeat(3,1fr)} }
+  @media(min-width:1040px){ .grid4{grid-template-columns:repeat(4,1fr)} }
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:18px; overflow:hidden;
+    transition:transform .18s ease, box-shadow .18s ease; display:flex; flex-direction:column; position:relative;
+  }
+  .card:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--gold)}
+  .card .art{background:linear-gradient(170deg, var(--art1), var(--art2)); padding:12% 20%; cursor:pointer; border:none; width:100%}
+  .card-body{padding:18px 20px 20px; display:flex; flex-direction:column; gap:5px; flex:1}
+  .card-body h3{font-size:1.18rem}
+  .card-body .sub{color:var(--ink-2); font-size:.83rem}
+  .rating{font-size:.78rem; color:var(--ink-2)}
+  .rating b{color:var(--gold); letter-spacing:1px}
+  .badge{
+    position:absolute; top:14px; left:14px; font-size:.62rem; letter-spacing:.14em; text-transform:uppercase;
+    background:var(--card); color:var(--accent); border:1px solid var(--line); border-radius:99px;
+    padding:5px 12px; font-weight:700; z-index:1;
+  }
+  .card-foot{display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:14px}
+  .price{font-family:ui-monospace,Consolas,monospace; font-weight:600; font-variant-numeric:tabular-nums}
+  .price s{color:var(--ink-2); font-weight:400; margin-left:6px}
+  .add-btn{
+    border:1px solid var(--line); background:none; border-radius:99px; padding:9px 18px;
+    color:var(--ink); font-size:.84rem; font-weight:600; min-height:40px;
+    transition:background .15s,color .15s,border-color .15s;
+  }
+  .add-btn:hover{background:var(--accent); border-color:var(--accent); color:var(--accent-contrast)}
+
+  /* ---------- collection controls ---------- */
+  .coll-head{padding:40px 0 8px}
+  .coll-head h1{font-size:clamp(2rem,4.6vw,3rem)}
+  .coll-head p{color:var(--ink-2); max-width:56ch; margin:12px 0 0}
+  .controls{display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:22px 0; position:sticky; top:62px; background:var(--paper); z-index:20}
+  .chip{
+    border:1px solid var(--line); background:var(--card); border-radius:99px; padding:9px 18px;
+    font-size:.84rem; color:var(--ink-2); min-height:40px;
+  }
+  .chip[aria-pressed="true"]{background:var(--accent-soft); border-color:var(--accent); color:var(--accent); font-weight:600}
+  .controls select{
+    margin-left:auto; border:1px solid var(--line); background:var(--card); border-radius:99px;
+    padding:9px 16px; font-size:.84rem; min-height:40px;
+  }
+  .count{font-size:.78rem; color:var(--ink-2); padding-bottom:16px}
+
+  /* ---------- routine ---------- */
+  .ritual{background:var(--card); border:1px solid var(--line); border-radius:22px; padding:44px 28px}
+  @media(min-width:820px){ .ritual{padding:60px} }
+  .steps{display:grid; gap:30px; margin-top:34px}
+  @media(min-width:680px){ .steps{grid-template-columns:repeat(3,1fr)} }
+  .step .n{color:var(--gold); font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; display:block; margin-bottom:10px; font-weight:700}
+  .step h3{font-size:1.2rem; margin-bottom:6px}
+  .step p{color:var(--ink-2); font-size:.9rem; margin:0}
+
+  /* ---------- press ---------- */
+  .press{display:flex; gap:32px 44px; justify-content:center; align-items:center; flex-wrap:wrap; padding:34px 0; border-block:1px solid var(--line)}
+  .press span{
+    font-family:Didot,"Bodoni MT",Georgia,serif; font-size:1.15rem; letter-spacing:.2em;
+    color:var(--ink-2); opacity:.75; text-transform:uppercase;
+  }
+  .press .q{width:100%; text-align:center; font-size:.72rem; letter-spacing:.22em; color:var(--ink-2); text-transform:uppercase; font-family:inherit; opacity:1}
+
+  /* ---------- reviews ---------- */
+  .reviews{display:grid; gap:22px}
+  @media(min-width:680px){ .reviews{grid-template-columns:repeat(3,1fr)} }
+  .review{background:var(--card); border:1px solid var(--line); border-radius:18px; padding:26px}
+  .stars{color:var(--gold); letter-spacing:3px; font-size:.85rem}
+  .review p{margin:14px 0 18px; font-family:Didot,"Bodoni MT",Georgia,serif; font-size:1.02rem; line-height:1.5}
+  .review footer{font-size:.8rem; color:var(--ink-2)}
+  .review footer b{color:var(--ink)}
+
+  /* ---------- newsletter ---------- */
+  .newsletter{
+    background:linear-gradient(160deg, var(--wash), var(--accent-soft));
+    border-radius:22px; padding:48px 28px; text-align:center;
+  }
+  .newsletter h2{font-size:clamp(1.6rem,3.4vw,2.2rem)}
+  .newsletter p{color:var(--ink-2); max-width:46ch; margin:12px auto 24px}
+  .nl-row{display:flex; gap:10px; max-width:440px; margin:0 auto; flex-wrap:wrap}
+  .nl-row input{
+    flex:1; min-width:200px; border:1px solid var(--line); background:var(--card);
+    border-radius:99px; padding:13px 20px; font-size:.92rem; min-height:48px;
+  }
+  .nl-row input::placeholder{color:var(--ink-2)}
+
+  /* ---------- footer ---------- */
+  .foot{border-top:1px solid var(--line); margin-top:24px}
+  .foot-grid{max-width:1180px; margin:0 auto; padding:52px 20px 36px; display:grid; gap:32px}
+  @media(min-width:760px){ .foot-grid{grid-template-columns:2fr 1fr 1fr 1fr} }
+  .foot h4{font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--ink-2); margin:0 0 12px; font-weight:700}
+  .foot ul{list-style:none; margin:0; padding:0; display:grid; gap:8px}
+  .foot a{text-decoration:none; color:var(--ink-2); font-size:.88rem}
+  .foot a:hover{color:var(--ink)}
+  .foot-bottom{
+    max-width:1180px; margin:0 auto; padding:0 20px 32px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+  }
+  .legal{font-size:.73rem; color:var(--ink-2)}
+  .pay{display:flex; gap:8px}
+  .pay span{
+    border:1px solid var(--line); border-radius:5px; padding:3px 8px; font-size:.6rem;
+    font-weight:700; letter-spacing:.04em; color:var(--ink-2); background:var(--card);
+    font-family:ui-monospace,Consolas,monospace;
+  }
+
+  /* ---------- product page ---------- */
+  .crumbs{padding:24px 0 0; font-size:.82rem; color:var(--ink-2)}
+  .crumbs button{background:none;border:none;color:var(--accent);padding:0;font-size:.82rem;text-decoration:underline}
+  .pdp{display:grid; gap:36px; padding:24px 0 40px}
+  @media(min-width:820px){ .pdp{grid-template-columns:1.05fr .95fr; gap:60px; padding:32px 0 56px} }
+  .gallery-main{background:linear-gradient(165deg, var(--art1), var(--art2)); border-radius:20px; padding:9% 18%; box-shadow:var(--shadow); transition:transform .25s var(--ease); will-change:transform}
+  .thumbs{display:flex; gap:10px; margin-top:12px}
+  .thumbs button{background:var(--art1); border:1.5px solid var(--line); border-radius:14px; width:74px; height:74px; padding:12px; transition:border-color .15s}
+  .thumbs button[aria-selected="true"]{border-color:var(--accent)}
+  .pdp h1{font-size:clamp(2rem,4.5vw,2.9rem)}
+  .pdp .rating{margin-top:10px}
+  .pdp .sub{color:var(--ink-2); margin:12px 0 4px}
+  .pdp .price{font-size:1.3rem; margin-top:14px; display:block}
+  .clinical{display:flex; gap:24px; margin-top:22px; padding:18px 22px; background:var(--accent-soft); border-radius:14px; flex-wrap:wrap}
+  .clinical div{font-size:.72rem; color:var(--ink-2); max-width:14ch}
+  .clinical strong{display:block; font-size:1.25rem; color:var(--accent); font-family:Didot,"Bodoni MT",Georgia,serif; font-weight:400}
+  .opt-label{font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--ink-2); display:block; margin:26px 0 10px; font-weight:700}
+  .opts{display:flex; gap:10px; flex-wrap:wrap}
+  .opts button{border:1.5px solid var(--line); background:var(--card); border-radius:99px; padding:12px 20px; min-height:44px; color:var(--ink); font-size:.9rem}
+  .opts button[aria-pressed="true"]{border-color:var(--accent); background:var(--accent-soft); font-weight:600}
+  .sub-box{display:grid; gap:8px; margin-top:8px}
+  .sub-opt{
+    display:flex; align-items:center; gap:12px; border:1.5px solid var(--line); border-radius:14px;
+    padding:14px 16px; cursor:pointer; background:var(--card); font-size:.9rem;
+  }
+  .sub-opt input{accent-color:var(--accent); width:18px; height:18px; margin:0}
+  .sub-opt.on{border-color:var(--accent); background:var(--accent-soft)}
+  .sub-opt .save{margin-left:auto; font-size:.7rem; font-weight:700; color:var(--accent); letter-spacing:.08em; text-transform:uppercase}
+  .buy-row{display:flex; gap:12px; margin-top:24px; align-items:stretch}
+  .qty-big{display:inline-flex; align-items:center; border:1.5px solid var(--line); border-radius:99px}
+  .qty-big button{background:none; border:none; width:44px; height:48px; color:var(--ink); font-size:1.1rem}
+  .qty-big span{min-width:28px; text-align:center; font-weight:600}
+  .buy-row .btn-primary{flex:1}
+  .note{font-size:.8rem; color:var(--ink-2); margin-top:14px}
+  details{border-top:1px solid var(--line); padding:16px 0}
+  details:last-of-type{border-bottom:1px solid var(--line)}
+  summary{cursor:pointer; font-weight:600; font-size:.95rem; list-style:none; display:flex; justify-content:space-between; align-items:center}
+  summary::after{content:"+"; color:var(--accent); font-size:1.2rem}
+  details[open] summary::after{content:"–"}
+  details p{color:var(--ink-2); font-size:.9rem; margin:10px 0 0}
+  .acc-wrap{margin-top:32px}
+  .pairs{padding:8px 0 56px}
+  .pairs h2{font-size:clamp(1.4rem,3vw,1.9rem); margin-bottom:24px}
+
+  /* ---------- checkout ---------- */
+  .co{display:grid; gap:40px; padding:32px 0 64px}
+  @media(min-width:900px){ .co{grid-template-columns:1.1fr .9fr; gap:56px} }
+  .co h1{font-size:clamp(1.8rem,4vw,2.4rem); margin-bottom:8px}
+  .co-note{font-size:.8rem; color:var(--ink-2); margin:0 0 22px}
+  .express{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:8px}
+  .express button{
+    border:none; border-radius:10px; padding:13px; font-weight:700; font-size:.9rem; min-height:48px;
+    color:#fff; letter-spacing:.02em;
+  }
+  .express .shoppay{background:#5A31F4}
+  .express .paypal{background:#FFC439; color:#253B80}
+  .divider{display:flex; align-items:center; gap:14px; color:var(--ink-2); font-size:.75rem; margin:18px 0; text-transform:uppercase; letter-spacing:.14em}
+  .divider::before,.divider::after{content:""; flex:1; height:1px; background:var(--line)}
+  .field{display:grid; gap:6px; margin-bottom:14px}
+  .field label{font-size:.78rem; font-weight:600; color:var(--ink-2)}
+  .field input,.field select{
+    border:1.5px solid var(--line); background:var(--card); border-radius:10px;
+    padding:13px 16px; font-size:.92rem; min-height:48px; width:100%;
+  }
+  .field input:focus{border-color:var(--accent); outline:none}
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+  .co h3{font-size:1.1rem; margin:26px 0 14px; font-family:inherit; font-weight:700}
+  .ship-opt{
+    display:flex; align-items:center; gap:12px; border:1.5px solid var(--line); border-radius:12px;
+    padding:14px 16px; cursor:pointer; background:var(--card); font-size:.88rem; margin-bottom:10px;
+  }
+  .ship-opt input{accent-color:var(--accent); width:18px; height:18px; margin:0}
+  .ship-opt.on{border-color:var(--accent); background:var(--accent-soft)}
+  .ship-opt .p{margin-left:auto; font-weight:600}
+  .summary{background:var(--wash); border:1px solid var(--line); border-radius:20px; padding:28px; align-self:start; position:sticky; top:84px}
+  .sum-line{display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--line); align-items:center; font-size:.88rem}
+  .sum-line .mini{width:52px; height:52px; background:var(--art1); border-radius:10px; padding:8px; flex-shrink:0; position:relative}
+  .sum-line .mini i{
+    position:absolute; top:-7px; right:-7px; background:var(--ink); color:var(--paper); font-style:normal;
+    border-radius:99px; font-size:.66rem; min-width:19px; height:19px; display:grid; place-items:center; font-weight:700;
+  }
+  .sum-line .amt{margin-left:auto}
+  .disc-row{display:flex; gap:8px; padding:16px 0}
+  .disc-row input{flex:1; border:1.5px solid var(--line); background:var(--card); border-radius:10px; padding:11px 14px; font-size:.88rem}
+  .disc-row button{border:1px solid var(--line); background:var(--card); border-radius:10px; padding:0 18px; font-weight:600; font-size:.85rem}
+  .tot{display:flex; justify-content:space-between; font-size:.88rem; padding:5px 0; color:var(--ink-2)}
+  .tot.grand{font-size:1.05rem; font-weight:700; color:var(--ink); padding-top:12px; margin-top:6px; border-top:1px solid var(--line)}
+  .tot .ok{color:var(--ok); font-weight:600}
+  .paybtn{width:100%; margin-top:16px}
+
+  /* ---------- cart drawer ---------- */
+  .scrim{position:fixed; inset:0; background:rgba(23,28,36,.5); z-index:60; opacity:0; pointer-events:none; transition:opacity .22s ease}
+  .scrim.open{opacity:1; pointer-events:auto}
+  .drawer{
+    position:fixed; top:0; right:0; height:100dvh; width:min(430px,94vw); z-index:70;
+    background:var(--paper); border-left:1px solid var(--line);
+    transform:translateX(102%); transition:transform .26s ease; display:flex; flex-direction:column;
+  }
+  .drawer.open{transform:none}
+  @media(prefers-reduced-motion:reduce){ .drawer,.scrim{transition:none} }
+  .drawer-head{display:flex; align-items:center; justify-content:space-between; padding:18px 22px; border-bottom:1px solid var(--line)}
+  .drawer-head h2{font-size:1.3rem}
+  .x{background:none; border:none; font-size:1.5rem; color:var(--ink-2); line-height:1; padding:8px}
+  .ship-bar{padding:14px 22px; border-bottom:1px solid var(--line); font-size:.78rem; color:var(--ink-2)}
+  .ship-bar .ok{color:var(--ok); font-weight:600}
+  .meter{height:6px; background:var(--wash); border-radius:99px; margin-top:8px; overflow:hidden}
+  .meter i{display:block; height:100%; background:var(--accent); border-radius:99px; transition:width .3s ease}
+  .drawer-items{flex:1; overflow-y:auto; padding:10px 22px}
+  .line-item{display:flex; gap:14px; padding:16px 0; border-bottom:1px solid var(--line)}
+  .line-item .mini{width:64px; height:64px; background:var(--art1); border-radius:12px; padding:10px; flex-shrink:0}
+  .line-item h4{margin:0; font-size:.95rem; font-family:inherit}
+  .line-item .sub{font-size:.78rem; color:var(--ink-2)}
+  .qty{display:inline-flex; align-items:center; gap:2px; border:1px solid var(--line); border-radius:99px; margin-top:8px}
+  .qty button{background:none; border:none; width:32px; height:32px; color:var(--ink); font-size:1rem}
+  .qty span{min-width:24px; text-align:center; font-size:.85rem}
+  .li-price{margin-left:auto; text-align:right; font-size:.9rem}
+  .empty-cart{text-align:center; color:var(--ink-2); padding:64px 20px}
+  .drawer-foot{padding:20px 22px; border-top:1px solid var(--line)}
+  .subtotal{display:flex; justify-content:space-between; font-weight:600; margin-bottom:6px}
+  .drawer-foot .fine{font-size:.75rem; color:var(--ink-2); margin:0 0 14px}
+  .drawer-foot .btn{width:100%}
+
+  /* ---------- motion language (locked tokens) ---------- */
+  :root{ --ease:cubic-bezier(.22,1,.36,1); --ease-lux:cubic-bezier(.25,.46,.45,.94); }
+  .rise{opacity:0; transform:translateY(20px); animation:rise .55s var(--ease-lux) forwards}
+  @keyframes rise{to{opacity:1; transform:none}}
+  .reveal{opacity:0; transform:translateY(24px); transition:opacity .55s var(--ease-lux), transform .55s var(--ease-lux)}
+  .reveal.in{opacity:1; transform:none}
+
+  /* hero atmosphere: masked grid + drifting blobs (settle once, then freeze) */
+  .hero{position:relative}
+  .hero::before{
+    content:""; position:absolute; inset:-24px -40px 0;
+    background-image:linear-gradient(to right, color-mix(in srgb, var(--accent) 7%, transparent) 1px, transparent 1px),
+                     linear-gradient(to bottom, color-mix(in srgb, var(--accent) 7%, transparent) 1px, transparent 1px);
+    background-size:56px 56px;
+    -webkit-mask-image:radial-gradient(ellipse 60% 55% at 50% 0%, #000 60%, transparent 100%);
+    mask-image:radial-gradient(ellipse 60% 55% at 50% 0%, #000 60%, transparent 100%);
+    pointer-events:none;
+  }
+  .hero>div{position:relative; z-index:1}
+  .blob{position:absolute; border-radius:50%; filter:blur(70px); pointer-events:none; opacity:0; z-index:0}
+  .blob-1{width:420px; height:420px; right:-80px; top:-100px; background:radial-gradient(circle, var(--accent-soft) 0%, transparent 70%); animation:drift1 2.4s var(--ease-lux) forwards}
+  .blob-2{width:360px; height:360px; left:-120px; bottom:-60px; background:radial-gradient(circle, color-mix(in srgb, var(--gold) 26%, transparent) 0%, transparent 70%); animation:drift2 2.8s var(--ease-lux) forwards}
+  @keyframes drift1{from{opacity:0; transform:translate(70px,-50px)} to{opacity:.95; transform:none}}
+  @keyframes drift2{from{opacity:0; transform:translate(-60px,50px)} to{opacity:.8; transform:none}}
+
+  /* signature gold CTA: shine band sweeps once per hover */
+  .btn-primary{position:relative; overflow:hidden}
+  .btn-primary::after{
+    content:""; position:absolute; top:-2px; bottom:-2px; left:-30%; width:26%;
+    background:linear-gradient(105deg, transparent, rgba(255,255,255,.5), transparent);
+    transform:skewX(-20deg) translateX(-120%); pointer-events:none;
+  }
+  .btn-primary:hover::after{animation:shine .65s var(--ease) forwards}
+  @keyframes shine{to{transform:skewX(-20deg) translateX(560%)}}
+
+  /* showcase card fan (:has() hover choreography) */
+  .fan-stage{display:grid; place-items:center; min-height:380px}
+  .fan{position:relative; width:170px; height:230px}
+  .fan-card{
+    position:absolute; inset:0; background:linear-gradient(170deg, var(--art1), var(--art2)); border:1px solid var(--line); border-radius:16px;
+    padding:16px; cursor:pointer; box-shadow:0 8px 26px rgba(37,42,49,.09);
+    transform:rotate(var(--r)) translate(var(--x), var(--y));
+    transition:transform .25s var(--ease), opacity .25s var(--ease), box-shadow .25s var(--ease);
+  }
+  .fan-card svg{height:100%; width:100%}
+  .fan-card:nth-child(1){--r:-14deg; --x:-124px; --y:26px; z-index:1}
+  .fan-card:nth-child(2){--r:-7deg;  --x:-62px;  --y:8px;  z-index:2}
+  .fan-card:nth-child(3){--r:0deg;   --x:0px;    --y:0px;  z-index:3; animation:anchor .8s var(--ease-lux)}
+  .fan-card:nth-child(4){--r:7deg;   --x:62px;   --y:8px;  z-index:2}
+  .fan-card:nth-child(5){--r:14deg;  --x:124px;  --y:26px; z-index:1}
+  @keyframes anchor{from{transform:perspective(700px) rotateX(20deg) scale(.9); opacity:0}}
+  .fan:hover .fan-card{transform:rotate(var(--r)) translate(var(--x), calc(var(--y) - 8px))}
+  .fan:has(.fan-card:hover) .fan-card:not(:hover){opacity:.5}
+  .fan .fan-card:hover{
+    transform:rotate(0deg) translate(var(--x), calc(var(--y) - 14px)) scale(1.08); z-index:6; opacity:1;
+    box-shadow:0 0 0 2px var(--gold), 0 18px 44px rgba(37,42,49,.16);
+  }
+  /* fan must fit its column at every width — tiers prevent clipping/overlap */
+  @media(min-width:820px) and (max-width:1099px){
+    .fan{width:138px; height:188px}
+    .fan-card:nth-child(1){--x:-98px; --y:20px} .fan-card:nth-child(2){--x:-49px}
+    .fan-card:nth-child(4){--x:49px}  .fan-card:nth-child(5){--x:98px; --y:20px}
+  }
+  @media(max-width:520px){
+    .fan{width:118px; height:162px}
+    .fan-stage{min-height:270px}
+    .fan-card:nth-child(1){--x:-72px; --y:16px} .fan-card:nth-child(2){--x:-36px; --y:5px}
+    .fan-card:nth-child(4){--x:36px; --y:5px}  .fan-card:nth-child(5){--x:72px; --y:16px}
+    .fan .fan-card:hover{transform:rotate(0deg) translate(var(--x), calc(var(--y) - 10px)) scale(1.04)}
+  }
+
+  /* routine spotlight (count-up price) */
+  .spotlight{display:grid; gap:36px; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:22px; padding:40px 24px}
+  @media(min-width:820px){ .spotlight{grid-template-columns:.95fr 1.05fr; padding:48px 56px} }
+  .spot-copy h2{font-size:clamp(1.7rem,3.6vw,2.4rem)}
+  .spot-copy p{color:var(--ink-2); max-width:48ch; margin:14px 0 20px}
+  .spot-price{font-family:ui-monospace,Consolas,monospace; font-weight:600; font-size:1.35rem; font-variant-numeric:tabular-nums}
+  .spot-price s{color:var(--ink-2); font-weight:400; margin-left:10px; font-size:1rem}
+
+  /* ornamental divider: gold diamond between fading hairlines */
+  .orn{display:flex; align-items:center; gap:16px; padding:10px 0}
+  .orn i{flex:1; height:1px}
+  .orn i:first-child{background:linear-gradient(90deg, transparent, var(--line))}
+  .orn i:last-child{background:linear-gradient(90deg, var(--line), transparent)}
+  .orn b{width:8px; height:8px; background:var(--gold); transform:rotate(45deg); box-shadow:0 0 0 5px color-mix(in srgb, var(--gold) 15%, transparent)}
+
+  @media(prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation-duration:.01ms !important; transition-duration:.01ms !important}
+    html{scroll-behavior:auto}
+  }
+
+  .toast{
+    position:fixed; bottom:24px; left:50%; transform:translate(-50%, 80px); z-index:90;
+    background:var(--ink); color:var(--paper); border-radius:99px; padding:12px 24px;
+    font-size:.88rem; transition:transform .25s ease; box-shadow:var(--shadow);
+  }
+  .toast.show{transform:translate(-50%,0)}
+  .view{display:none} .view.active{display:block}
+  .skip{position:absolute; left:-9999px} .skip:focus{left:12px; top:8px; z-index:100; background:var(--accent); color:var(--accent-contrast); padding:8px 14px; border-radius:6px}
+</style>
+
+<div class="announce"><b>Renewal event</b> — 20% off orders over $100 with code <b>RENEW20</b> · Free shipping over $75</div>
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <div class="bar">
+    <a href="#home" class="wordmark" onclick="go('home')">ÉTERNE<span>.</span></a>
+    <nav aria-label="Main">
+      <a href="#" onclick="go('shop');return false">Shop all</a>
+      <a href="#shelf" onclick="go('home')">Bestsellers</a>
+      <a href="#ritual" onclick="go('home')">The Routine</a>
+      <a href="#reviews" onclick="go('home')">Results</a>
+    </nav>
+    <button class="bag-btn" onclick="toggleCart(true)" aria-label="Open bag">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>
+      Bag <span class="bag-count" id="bagCount">0</span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+<!-- ============ HOME ============ -->
+<div class="view active" id="view-home">
+  <section class="hero" id="home">
+    <span class="blob blob-1" aria-hidden="true"></span>
+    <span class="blob blob-2" aria-hidden="true"></span>
+    <div>
+      <span class="eyebrow rise">Clinical actives · Measured results</span>
+      <h1 class="rise" style="animation-delay:.1s">Age is a fact. <em>Looking it</em> is optional.</h1>
+      <p class="lede rise" style="animation-delay:.2s">Clinically dosed retinal, peptides and ceramides — published percentages, measured results, nothing perfumed and nothing padded.</p>
+      <div class="cta-row rise" style="animation-delay:.3s">
+        <a class="btn btn-primary" href="#" onclick="go('shop');return false">Shop all products</a>
+        <a class="btn btn-ghost" href="#ritual">See the routine</a>
+      </div>
+      <div class="hero-meta rise" style="animation-delay:.4s">
+        <div><strong>−31%</strong>wrinkle depth at 8 weeks*</div>
+        <div><strong>94%</strong>reported firmer skin*</div>
+        <div><strong>0</strong>fragrance, dyes or fillers</div>
+      </div>
+    </div>
+    <div class="hero-art rise" aria-hidden="true" style="animation-delay:.25s">
+      <svg viewBox="0 0 400 340" role="img" aria-label="Illustration of a serum bottle, cream jar and eye pump">
+        <defs>
+          <linearGradient id="glassH" x1="0" x2="1"><stop offset="0" stop-color="#EBD3D8"/><stop offset=".5" stop-color="#F9EBED"/><stop offset="1" stop-color="#E2C4CB"/></linearGradient>
+          <linearGradient id="serumH" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#DCA5B0"/><stop offset="1" stop-color="#C07E8D"/></linearGradient>
+          <linearGradient id="jarH" x1="0" x2="1"><stop offset="0" stop-color="#EFDFC9"/><stop offset=".5" stop-color="#FCF8F5"/><stop offset="1" stop-color="#DFC9AC"/></linearGradient>
+          <linearGradient id="goldH" x1="0" x2="1"><stop offset="0" stop-color="#A3814C"/><stop offset=".5" stop-color="#D4B47D"/><stop offset="1" stop-color="#977546"/></linearGradient>
+        </defs>
+        <ellipse cx="200" cy="310" rx="170" ry="15" fill="#2B3240" opacity=".12"/>
+        <path d="M52 296 q46 -22 108 -8 q40 9 64 -6" stroke="#EFDCDF" stroke-width="14" fill="none" stroke-linecap="round" opacity=".9"/>
+        <g>
+          <rect x="96" y="120" width="82" height="178" rx="12" fill="url(#glassH)"/>
+          <rect x="102" y="150" width="70" height="142" rx="9" fill="url(#serumH)" opacity=".8"/>
+          <rect x="112" y="86" width="50" height="38" rx="6" fill="#2B3240"/>
+          <rect x="130" y="60" width="14" height="30" rx="7" fill="#2B3240"/>
+          <rect x="133" y="124" width="8" height="150" rx="4" fill="#9B6272" opacity=".7"/>
+          <rect x="108" y="196" width="58" height="52" rx="2" fill="#FCF8F5"/>
+          <text x="137" y="217" text-anchor="middle" font-family="Georgia,serif" font-size="11" letter-spacing="2.5" fill="#2B3240">ÉTERNE</text>
+          <text x="137" y="233" text-anchor="middle" font-family="monospace" font-size="6.4" letter-spacing="1" fill="#8A8375">RETINAL 0.1%</text>
+          <rect x="112" y="132" width="10" height="120" rx="5" fill="#FFF" opacity=".4"/>
+        </g>
+        <g>
+          <rect x="212" y="196" width="112" height="98" rx="14" fill="url(#jarH)"/>
+          <rect x="206" y="170" width="124" height="32" rx="12" fill="url(#goldH)"/>
+          <text x="268" y="240" text-anchor="middle" font-family="Georgia,serif" font-size="12" letter-spacing="2.6" fill="#2B3240">ÉTERNE</text>
+          <text x="268" y="257" text-anchor="middle" font-family="monospace" font-size="6.6" letter-spacing="1" fill="#8A8375">CERAMIDE CREAM</text>
+          <rect x="220" y="204" width="12" height="82" rx="6" fill="#FFF" opacity=".55"/>
+        </g>
+        <g transform="rotate(4 350 200)">
+          <rect x="336" y="130" width="34" height="150" rx="10" fill="url(#glassH)"/>
+          <rect x="342" y="104" width="22" height="30" rx="5" fill="#2B3240"/>
+          <rect x="356" y="96" width="18" height="12" rx="4" fill="#2B3240"/>
+          <rect x="341" y="168" width="24" height="66" rx="2" fill="#FCF8F5"/>
+          <text x="353" y="196" text-anchor="middle" font-family="monospace" font-size="5.6" letter-spacing=".6" fill="#8A8375">EYE</text>
+          <rect x="340" y="140" width="6" height="128" rx="3" fill="#FFF" opacity=".45"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <div class="props">
+    <div class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z"/><circle cx="7" cy="17" r="1.6"/><circle cx="18" cy="17" r="1.6"/></svg><div><b>Free shipping</b>on orders over $75</div></div>
+    <div class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><div><b>60-day guarantee</b>results or refunded</div></div>
+    <div class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4c-4 5-6 7.5-6 10.5A6 6 0 0 0 18 14.5C18 11.5 16 9 12 4z"/></svg><div><b>Fragrance-free</b>no dyes, no fillers</div></div>
+    <div class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.5l2.3 2.3 4.7-5.1"/></svg><div><b>Dermatologist tested</b>on sensitive skin</div></div>
+  </div>
+
+  <section id="shelf">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Bestsellers</span>
+        <h2>The three most reordered.</h2>
+      </div>
+      <a class="more" href="#" onclick="go('shop');return false">Shop all 7 →</a>
+    </div>
+    <div class="grid3" id="featGrid"></div>
+  </section>
+
+  <section id="ritual">
+    <div class="ritual">
+      <span class="eyebrow">The routine</span>
+      <h2>Ninety seconds, morning and night.</h2>
+      <div class="steps">
+        <div class="step"><span class="n">Step 01 — Prep</span><h3>Cleanse &amp; dry</h3><p>Actives absorb best on clean, fully dry skin. Wait two minutes after cleansing — damp skin amplifies retinal irritation.</p></div>
+        <div class="step"><span class="n">Step 02 — Treat</span><h3>Serum, then eyes</h3><p>Three drops of Retinal Serum pressed — not rubbed — across face and neck at night. Eye cream morning and night, ring finger only.</p></div>
+        <div class="step"><span class="n">Step 03 — Seal</span><h3>Barrier cream</h3><p>Finish with Ceramide Recovery Cream to lock actives in and irritation out. In the morning, always follow with SPF.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="spot">
+    <div class="spotlight">
+      <div class="fan-stage"><div class="fan" id="fan" role="group" aria-label="The routine lineup — click a product to view it"></div></div>
+      <div class="spot-copy">
+        <span class="eyebrow">The complete routine</span>
+        <h2>Four steps. <em>One box.</em></h2>
+        <p>Cleanser, retinal serum, eye cream and barrier cream — sequenced to work together, with a week-by-week onboarding card. Hover the lineup; click any product to inspect it.</p>
+        <span class="spot-price">$<span id="countUp">0</span><s>$210</s></span>
+        <div class="cta-row" style="margin-top:20px">
+          <button class="btn btn-primary" onclick="addToCart('set','Core routine',false,1)">Add the routine — save 18%</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="press" aria-label="Press mentions">
+    <span class="q">As featured in</span>
+    <span>Vogue</span><span>Allure</span><span>Bazaar</span><span>Elle</span><span>Byrdie</span>
+  </div>
+
+  <div class="orn" aria-hidden="true"><i></i><b></b><i></i></div>
+
+  <section id="reviews">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">4.9 average · 559 reviews</span>
+        <h2>Results people <em>notice.</em></h2>
+      </div>
+    </div>
+    <div class="reviews">
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p>“Eight weeks in and the elevens between my brows have visibly softened. First retinoid that hasn't wrecked my barrier.”</p>
+        <footer><b>Carolina M., 52</b> · Verified buyer · Dry, sensitive skin</footer>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <p>“My dermatologist asked what I'd changed. That's the whole review.”</p>
+        <footer><b>Priya S., 47</b> · Verified buyer · Combination skin</footer>
+      </article>
+      <article class="review">
+        <div class="stars" aria-label="4 out of 5 stars">★★★★☆</div>
+        <p>“The eye cream depuffs like nothing I've tried at triple the price. Serum took two weeks of adjustment — worth it.”</p>
+        <footer><b>Janet K., 61</b> · Verified buyer · Mature skin</footer>
+      </article>
+    </div>
+  </section>
+
+  <div class="orn" aria-hidden="true"><i></i><b></b><i></i></div>
+
+  <section>
+    <div class="newsletter">
+      <span class="eyebrow">The Éterne edit</span>
+      <h2>Skincare science, monthly.</h2>
+      <p>One email a month — new clinical data, routine tips, and early access to restocks. No noise.</p>
+      <form class="nl-row" onsubmit="toast('Demo — signup disabled'); return false">
+        <label class="skip" for="nl">Email address</label>
+        <input id="nl" type="email" placeholder="Email address" autocomplete="email" required>
+        <button class="btn btn-primary" type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- ============ COLLECTION ============ -->
+<div class="view" id="view-shop">
+  <div class="coll-head">
+    <span class="eyebrow">All products</span>
+    <h1>The collection.</h1>
+    <p>Seven formulas, every active at its clinically studied dose. Filter by what your skin is asking for.</p>
+  </div>
+  <div class="controls" id="filterRow" role="group" aria-label="Filter by concern"></div>
+  <div class="count" id="collCount"></div>
+  <div class="grid4" id="shopGrid" style="padding-bottom:64px"></div>
+</div>
+
+<!-- ============ PRODUCT ============ -->
+<div class="view" id="view-product">
+  <div class="crumbs"><button onclick="go('shop')">Shop all</button> / <span id="crumbName">Product</span></div>
+  <div class="pdp">
+    <div>
+      <div class="gallery-main" id="galleryMain"></div>
+      <div class="thumbs" id="thumbs" role="tablist" aria-label="Product images"></div>
+    </div>
+    <div>
+      <span class="eyebrow" id="pdpEyebrow"></span>
+      <h1 id="pdpName"></h1>
+      <div class="rating" id="pdpRating"></div>
+      <p class="sub" id="pdpSub"></p>
+      <span class="price" id="pdpPrice"></span>
+      <div class="clinical" id="pdpClinical"></div>
+      <div id="pdpOpts"></div>
+      <span class="opt-label">Purchase type</span>
+      <div class="sub-box" id="subBox">
+        <label class="sub-opt on"><input type="radio" name="ptype" value="one" checked> One-time purchase</label>
+        <label class="sub-opt"><input type="radio" name="ptype" value="sub"> Subscribe, every 8 weeks <span class="save">Save 15%</span></label>
+      </div>
+      <div class="buy-row">
+        <div class="qty-big" aria-label="Quantity">
+          <button onclick="pdpQty(-1)" aria-label="Decrease quantity">−</button><span id="pdpQty">1</span><button onclick="pdpQty(1)" aria-label="Increase quantity">+</button>
+        </div>
+        <button class="btn btn-primary" id="pdpAdd">Add to bag</button>
+      </div>
+      <p class="note">Ships within 48 hours · Free U.S. shipping over $75 · 60-day results guarantee · Pause or cancel subscriptions anytime</p>
+      <div class="acc-wrap" id="pdpDetails"></div>
+    </div>
+  </div>
+  <div class="pairs">
+    <h2>Pairs with</h2>
+    <div class="grid3" id="pairGrid"></div>
+  </div>
+</div>
+
+<!-- ============ CHECKOUT ============ -->
+<div class="view" id="view-checkout">
+  <div class="co">
+    <div>
+      <h1>Checkout</h1>
+      <p class="co-note">Demo storefront — no payment is processed and no data is stored.</p>
+      <div class="express">
+        <button class="shoppay" onclick="toast('Demo — express checkout disabled')">Shop&nbsp;Pay</button>
+        <button class="paypal" onclick="toast('Demo — express checkout disabled')">PayPal</button>
+      </div>
+      <div class="divider">or continue below</div>
+      <h3>Contact</h3>
+      <div class="field"><label for="coEmail">Email</label><input id="coEmail" type="email" autocomplete="email" placeholder="you@example.com"></div>
+      <h3>Delivery</h3>
+      <div class="two">
+        <div class="field"><label for="coFirst">First name</label><input id="coFirst" autocomplete="given-name"></div>
+        <div class="field"><label for="coLast">Last name</label><input id="coLast" autocomplete="family-name"></div>
+      </div>
+      <div class="field"><label for="coAddr">Address</label><input id="coAddr" autocomplete="street-address"></div>
+      <div class="two">
+        <div class="field"><label for="coCity">City</label><input id="coCity" autocomplete="address-level2"></div>
+        <div class="field"><label for="coZip">ZIP code</label><input id="coZip" inputmode="numeric" autocomplete="postal-code"></div>
+      </div>
+      <h3>Shipping method</h3>
+      <label class="ship-opt on"><input type="radio" name="ship" value="0" checked onchange="setShip(this)"> Standard (3–5 business days) <span class="p" id="stdShip">$6.00</span></label>
+      <label class="ship-opt"><input type="radio" name="ship" value="14" onchange="setShip(this)"> Express (1–2 business days) <span class="p">$14.00</span></label>
+      <h3>Payment</h3>
+      <div class="field"><label for="coCard">Card number</label><input id="coCard" inputmode="numeric" placeholder="1234 5678 9012 3456" autocomplete="cc-number"></div>
+      <div class="two">
+        <div class="field"><label for="coExp">Expiration (MM / YY)</label><input id="coExp" placeholder="MM / YY" autocomplete="cc-exp"></div>
+        <div class="field"><label for="coCvc">Security code</label><input id="coCvc" inputmode="numeric" placeholder="CVC" autocomplete="cc-csc"></div>
+      </div>
+      <button class="btn btn-primary paybtn" onclick="toast('Demo storefront — payment is disabled')">Pay now</button>
+    </div>
+    <aside class="summary" aria-label="Order summary">
+      <div id="sumItems"></div>
+      <div class="disc-row">
+        <label class="skip" for="disc">Discount code</label>
+        <input id="disc" placeholder="Discount code">
+        <button onclick="applyDisc()">Apply</button>
+      </div>
+      <div class="tot"><span>Subtotal</span><span class="mono" id="sumSub">$0.00</span></div>
+      <div class="tot" id="discLine" style="display:none"><span>Discount (RENEW20)</span><span class="mono ok" id="sumDisc"></span></div>
+      <div class="tot"><span>Shipping</span><span class="mono" id="sumShip">$6.00</span></div>
+      <div class="tot grand"><span>Total</span><span class="mono" id="sumTotal">$0.00</span></div>
+    </aside>
+  </div>
+</div>
+</main>
+
+<footer class="foot">
+  <div class="foot-grid">
+    <div>
+      <a href="#home" class="wordmark" onclick="go('home')" style="font-size:1.05rem">ÉTERNE<span>.</span></a>
+      <p style="color:var(--ink-2); font-size:.88rem; max-width:38ch; margin:14px 0 0">
+        Clinically dosed anti-aging skincare. Published percentages, measured results — and nothing else in the bottle.
+      </p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul><li><a href="#" onclick="go('shop');return false">All products</a></li><li><a href="#shelf" onclick="go('home')">Bestsellers</a></li><li><a href="#" onclick="go('shop');return false">The complete routine</a></li></ul>
+    </div>
+    <div>
+      <h4>Learn</h4>
+      <ul><li><a href="#ritual" onclick="go('home')">The routine</a></li><li><a href="#" onclick="return false">Clinical data</a></li><li><a href="#" onclick="return false">Ingredient index</a></li></ul>
+    </div>
+    <div>
+      <h4>Support</h4>
+      <ul><li><a href="#" onclick="return false">Shipping &amp; returns</a></li><li><a href="#" onclick="return false">FAQ</a></li><li><a href="#" onclick="return false">Contact</a></li></ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <div class="legal">© 2026 Éterne Labs — concept storefront demo. Brand, products, statistics and reviews are illustrative.</div>
+    <div class="pay" aria-label="Accepted payment methods"><span>VISA</span><span>MC</span><span>AMEX</span><span>PAYPAL</span><span>SHOP</span></div>
+  </div>
+</footer>
+
+<!-- cart -->
+<div class="scrim" id="scrim" onclick="toggleCart(false)"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping bag" aria-hidden="true">
+  <div class="drawer-head">
+    <h2>Your bag</h2>
+    <button class="x" onclick="toggleCart(false)" aria-label="Close bag">×</button>
+  </div>
+  <div class="ship-bar" id="shipBar"></div>
+  <div class="drawer-items" id="cartItems"></div>
+  <div class="drawer-foot">
+    <div class="subtotal"><span>Subtotal</span><span class="mono" id="subtotal">$0.00</span></div>
+    <p class="fine">Shipping, discounts &amp; taxes calculated at checkout.</p>
+    <button class="btn btn-primary" onclick="goCheckout()">Checkout</button>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ---------- SVG product art ---------- */
+/* every render gets a unique gradient-id suffix — duplicate ids resolve to
+   hidden views' copies and paint as transparent */
+let UID = 0;
+const uq = s => (s||"a") + (UID++);
+const P = {glass:"#EBD3D8",glassHi:"#F9EBED",glassLo:"#E2C4CB",ink:"#2B3240",grey:"#8A8375",label:"#FCF8F5"};
+function bottleArt(fill1,fill2,txt1,txt2,s){
+  return `<svg viewBox="0 0 200 240" role="img" aria-label="${txt1} ${txt2} bottle">
+    <defs><linearGradient id="g${s}" x1="0" x2="1"><stop offset="0" stop-color="${P.glass}"/><stop offset=".5" stop-color="${P.glassHi}"/><stop offset="1" stop-color="${P.glassLo}"/></linearGradient>
+    <linearGradient id="f${s}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${fill1}"/><stop offset="1" stop-color="${fill2}"/></linearGradient></defs>
+    <ellipse cx="100" cy="224" rx="64" ry="9" fill="${P.ink}" opacity=".12"/>
+    <rect x="62" y="70" width="76" height="152" rx="11" fill="url(#g${s})"/>
+    <rect x="68" y="96" width="64" height="120" rx="8" fill="url(#f${s})" opacity=".8"/>
+    <rect x="77" y="40" width="46" height="34" rx="6" fill="${P.ink}"/>
+    <rect x="93" y="18" width="14" height="26" rx="7" fill="${P.ink}"/>
+    <rect x="72" y="130" width="56" height="52" rx="2" fill="${P.label}"/>
+    <text x="100" y="152" text-anchor="middle" font-family="Georgia,serif" font-size="11.5" letter-spacing="2.6" fill="${P.ink}">ÉTERNE</text>
+    <text x="100" y="168" text-anchor="middle" font-family="monospace" font-size="6.4" letter-spacing="1" fill="${P.grey}">${txt2}</text>
+    <rect x="68" y="80" width="10" height="130" rx="5" fill="#FFF" opacity=".4"/>
+  </svg>`;
+}
+function tubeArt(cap,txt,s){
+  return `<svg viewBox="0 0 200 240" role="img" aria-label="${txt} tube">
+    <defs><linearGradient id="t${s}" x1="0" x2="1"><stop offset="0" stop-color="#EFDFC9"/><stop offset=".5" stop-color="#FCF8F5"/><stop offset="1" stop-color="#DFC9AC"/></linearGradient></defs>
+    <ellipse cx="100" cy="222" rx="52" ry="8" fill="${P.ink}" opacity=".12"/>
+    <path d="M70 88 h60 l8 118 q0 14 -14 14 h-48 q-14 0 -14 -14 z" fill="url(#t${s})"/>
+    <rect x="76" y="56" width="48" height="34" rx="8" fill="${cap}"/>
+    <rect x="74" y="130" width="52" height="58" rx="2" fill="${P.label}" opacity=".01"/>
+    <text x="100" y="150" text-anchor="middle" font-family="Georgia,serif" font-size="11" letter-spacing="2.2" fill="${P.ink}">ÉTERNE</text>
+    <text x="100" y="166" text-anchor="middle" font-family="monospace" font-size="6.2" letter-spacing=".9" fill="${P.grey}">${txt}</text>
+    <path d="M78 96 q0 100 4 128" stroke="#FFF" stroke-width="7" opacity=".45" fill="none" stroke-linecap="round"/>
+  </svg>`;
+}
+const ART = {
+  serum:(s="a")=>bottleArt("#DCA5B0","#C07E8D","Retinal serum","RETINAL 0.1%","sr"+s),
+  vitc:(s="a")=>bottleArt("#E8C48F","#D3A45C","Vitamin C drops","VITAMIN C 15%","vc"+s),
+  serumDrop:()=>`<svg viewBox="0 0 200 240" role="img" aria-label="Dropper releasing a drop of serum">
+    <ellipse cx="100" cy="220" rx="60" ry="8" fill="#2B3240" opacity=".12"/>
+    <g transform="rotate(8 100 80)">
+      <rect x="88" y="20" width="22" height="16" rx="6" fill="#2B3240"/>
+      <path d="M93 36 h12 l-2 78 q0 8 -4 8 q-4 0 -4 -8 z" fill="#EBD3D8"/>
+      <path d="M96 42 h6 l-1.5 66 q0 5 -1.5 5 q-1.5 0 -1.5 -5 z" fill="#C07E8D"/>
+    </g>
+    <path d="M107 138 q9 14 0 22 q-9 -8 0 -22z" fill="#C98D9B"/>
+    <ellipse cx="104" cy="196" rx="34" ry="10" fill="#EDD6DA"/>
+    <ellipse cx="104" cy="193" rx="26" ry="7" fill="#F6E6E8"/>
+  </svg>`,
+  swatch:()=>`<svg viewBox="0 0 200 240" role="img" aria-label="Cream swatch on a porcelain surface">
+    <path d="M36 170 q40 -46 92 -38 q44 7 40 34 q-4 24 -46 22 q-56 -3 -86 -18z" fill="#EFD9DD" opacity=".7"/>
+    <path d="M52 158 q34 -32 76 -26 q34 5 31 24 q-3 18 -37 17 q-45 -2 -70 -15z" fill="#E3BDC5"/>
+    <path d="M74 148 q24 -18 50 -14 q20 3 18 14 q-2 12 -25 11 q-29 -1 -43 -11z" fill="#D49AA6"/>
+    <circle cx="150" cy="98" r="4" fill="#D49AA6" opacity=".6"/>
+    <circle cx="46" cy="120" r="3" fill="#E3BDC5" opacity=".7"/>
+  </svg>`,
+  eye:(s="a")=>`<svg viewBox="0 0 200 240" role="img" aria-label="Peptide eye cream pump">
+    <defs><linearGradient id="e${s}" x1="0" x2="1"><stop offset="0" stop-color="#EBD3D8"/><stop offset=".5" stop-color="#F9EBED"/><stop offset="1" stop-color="#E2C4CB"/></linearGradient></defs>
+    <ellipse cx="100" cy="224" rx="46" ry="8" fill="#2B3240" opacity=".12"/>
+    <rect x="76" y="64" width="48" height="158" rx="12" fill="url(#e${s})"/>
+    <rect x="84" y="36" width="26" height="32" rx="5" fill="#2B3240"/>
+    <rect x="102" y="28" width="22" height="12" rx="5" fill="#2B3240"/>
+    <rect x="82" y="108" width="36" height="72" rx="2" fill="#FCF8F5"/>
+    <text x="100" y="132" text-anchor="middle" font-family="Georgia,serif" font-size="9" letter-spacing="1.8" fill="#2B3240">ÉTERNE</text>
+    <text x="100" y="148" text-anchor="middle" font-family="monospace" font-size="6" letter-spacing=".8" fill="#8A8375">PEPTIDE</text>
+    <text x="100" y="160" text-anchor="middle" font-family="monospace" font-size="6" letter-spacing=".8" fill="#8A8375">EYE 15ML</text>
+    <rect x="81" y="74" width="8" height="136" rx="4" fill="#FFF" opacity=".45"/>
+  </svg>`,
+  jar:(s="a")=>`<svg viewBox="0 0 200 240" role="img" aria-label="Ceramide cream jar with gold lid">
+    <defs><linearGradient id="j${s}" x1="0" x2="1"><stop offset="0" stop-color="#EFDFC9"/><stop offset=".5" stop-color="#FCF8F5"/><stop offset="1" stop-color="#DFC9AC"/></linearGradient>
+    <linearGradient id="au${s}" x1="0" x2="1"><stop offset="0" stop-color="#A3814C"/><stop offset=".5" stop-color="#D4B47D"/><stop offset="1" stop-color="#977546"/></linearGradient></defs>
+    <ellipse cx="100" cy="222" rx="72" ry="9" fill="#2B3240" opacity=".12"/>
+    <rect x="34" y="108" width="132" height="110" rx="16" fill="url(#j${s})"/>
+    <rect x="27" y="76" width="146" height="38" rx="14" fill="url(#au${s})"/>
+    <text x="100" y="158" text-anchor="middle" font-family="Georgia,serif" font-size="13" letter-spacing="2.8" fill="#2B3240">ÉTERNE</text>
+    <text x="100" y="176" text-anchor="middle" font-family="monospace" font-size="7" letter-spacing="1.1" fill="#8A8375">CERAMIDE CREAM 50ML</text>
+    <rect x="44" y="118" width="13" height="90" rx="6" fill="#FFF" opacity=".55"/>
+  </svg>`,
+  jarOpen:(s="a")=>`<svg viewBox="0 0 200 240" role="img" aria-label="Open jar showing whipped cream texture">
+    <defs><linearGradient id="jo${s}" x1="0" x2="1"><stop offset="0" stop-color="#EFDFC9"/><stop offset=".5" stop-color="#FCF8F5"/><stop offset="1" stop-color="#DFC9AC"/></linearGradient>
+    <radialGradient id="cr${s}" cx=".5" cy=".4" r=".8"><stop offset="0" stop-color="#FEFBF9"/><stop offset="1" stop-color="#E6D3BC"/></radialGradient></defs>
+    <ellipse cx="100" cy="222" rx="72" ry="9" fill="#2B3240" opacity=".12"/>
+    <rect x="34" y="102" width="132" height="116" rx="16" fill="url(#jo${s})"/>
+    <ellipse cx="100" cy="104" rx="66" ry="15" fill="#CDB69A"/>
+    <ellipse cx="100" cy="101" rx="58" ry="12" fill="url(#cr${s})"/>
+    <path d="M72 100 q14 -8 30 -3 q18 6 34 -2" stroke="#E6D6CD" stroke-width="4" fill="none" stroke-linecap="round"/>
+    <g transform="rotate(-18 158 70)"><rect x="150" y="34" width="15" height="52" rx="7" fill="#D4B47D"/><ellipse cx="157" cy="92" rx="12" ry="7" fill="#BE9C6B"/></g>
+  </svg>`,
+  cleanser:(s="a")=>tubeArt("#2B3240","GEL CLEANSER 150ML","cl"+s),
+  spf:(s="a")=>tubeArt("#BE9C6B","DAY VEIL SPF 50","sp"+s),
+  mist:(s="a")=>`<svg viewBox="0 0 200 240" role="img" aria-label="Hyaluronic mist bottle">
+    <defs><linearGradient id="m${s}" x1="0" x2="1"><stop offset="0" stop-color="#D8E0E8"/><stop offset=".5" stop-color="#EDF2F6"/><stop offset="1" stop-color="#C9D4DE"/></linearGradient></defs>
+    <ellipse cx="100" cy="222" rx="50" ry="8" fill="#2B3240" opacity=".12"/>
+    <rect x="70" y="82" width="60" height="140" rx="12" fill="url(#m${s})"/>
+    <rect x="82" y="52" width="36" height="32" rx="6" fill="#2B3240"/>
+    <rect x="90" y="36" width="20" height="18" rx="5" fill="#2B3240"/>
+    <rect x="76" y="122" width="48" height="58" rx="2" fill="#FCF8F5"/>
+    <text x="100" y="144" text-anchor="middle" font-family="Georgia,serif" font-size="10" letter-spacing="2" fill="#2B3240">ÉTERNE</text>
+    <text x="100" y="160" text-anchor="middle" font-family="monospace" font-size="6" letter-spacing=".8" fill="#8A8375">HA MIST 100ML</text>
+    <rect x="75" y="92" width="8" height="118" rx="4" fill="#FFF" opacity=".5"/>
+    <circle cx="140" cy="60" r="2.5" fill="#C9D4DE"/><circle cx="150" cy="48" r="2" fill="#C9D4DE"/><circle cx="146" cy="72" r="1.6" fill="#C9D4DE"/>
+  </svg>`,
+  set:(s="a")=>`<svg viewBox="0 0 200 240" role="img" aria-label="The complete routine set of four products">
+    <defs><linearGradient id="sg${s}" x1="0" x2="1"><stop offset="0" stop-color="#EBD3D8"/><stop offset="1" stop-color="#E2C4CB"/></linearGradient>
+    <linearGradient id="sa${s}" x1="0" x2="1"><stop offset="0" stop-color="#A3814C"/><stop offset="1" stop-color="#D4B47D"/></linearGradient></defs>
+    <ellipse cx="100" cy="224" rx="82" ry="9" fill="#2B3240" opacity=".12"/>
+    <rect x="26" y="120" width="44" height="102" rx="8" fill="url(#sg${s})"/>
+    <rect x="36" y="98" width="24" height="24" rx="5" fill="#2B3240"/>
+    <rect x="80" y="96" width="34" height="126" rx="8" fill="#EFDFC9"/>
+    <rect x="86" y="72" width="22" height="26" rx="5" fill="#2B3240"/>
+    <rect x="122" y="150" width="66" height="72" rx="10" fill="#FCF8F5"/>
+    <rect x="118" y="130" width="74" height="24" rx="9" fill="url(#sa${s})"/>
+    <text x="100" y="46" text-anchor="middle" font-family="Georgia,serif" font-size="12" letter-spacing="3" fill="#2B3240">THE ROUTINE</text>
+    <line x1="70" y1="54" x2="130" y2="54" stroke="#BE9C6B" stroke-width="1"/>
+  </svg>`
+};
+
+Object.keys(ART).forEach(k=>{ const f = ART[k]; ART[k] = s => f(uq(s)); });
+
+/* ---------- catalog ---------- */
+const CATALOG = [
+  { id:"serum", tags:["lines"], featured:1, badge:"Bestseller", rate:4.9, votes:214,
+    eyebrow:"The hero · 0.1% retinal", name:"Retinal Renewal Serum",
+    sub:"Encapsulated retinal at a clinical 0.1%, buffered with squalane so skin adapts without the flake.",
+    price:72, compare:null, art:["serum","serumDrop","swatch"],
+    clinical:[["−31%","wrinkle depth at 8 wks*"],["11×","faster than retinol*"],["0.1%","published dose"]],
+    optLabel:"Size", opts:["30ml","50ml (+$34)"],
+    details:[
+      ["Key actives","0.1% encapsulated retinaldehyde, 2% squalane, 0.5% bisabolol. Full INCI list published on every batch."],
+      ["How to use","Night only. Three drops pressed onto dry skin. Start twice a week, add a night each week as skin adapts. Always SPF the morning after."],
+      ["Clinical testing","Instrumentally measured on 42 participants aged 40–65 over 8 weeks: −31% average wrinkle depth. (Illustrative demo data.)"]
+    ], pairs:["cream","spf"] },
+  { id:"eye", tags:["firm","eyes"], featured:1, badge:"Save $10", rate:4.8, votes:156,
+    eyebrow:"Morning + night · Fragrance-free", name:"Peptide Firming Eye Cream",
+    sub:"Matrixyl 3000 and caffeine in an airless pump — depuffs by morning, firms by month two.",
+    price:48, compare:58, art:["eye","swatch"],
+    clinical:[["87%","saw brighter under-eyes*"],["4wks","to visible depuffing*"],["15ml","airless pump"]],
+    optLabel:"Routine", opts:["Single","AM + PM duo (+$40)"],
+    details:[
+      ["Key actives","5% Matrixyl 3000 peptide complex, 1% caffeine, 2% niacinamide. Ophthalmologist tested."],
+      ["How to use","One pump split between both eyes. Pat with the ring finger from inner to outer corner — never rub."]
+    ], pairs:["serum","cream"] },
+  { id:"cream", tags:["barrier"], featured:1, badge:"New", rate:4.9, votes:189,
+    eyebrow:"The seal · Barrier repair", name:"Ceramide Recovery Cream",
+    sub:"A 3:1:1 ceramide-to-cholesterol ratio that rebuilds the barrier your actives depend on.",
+    price:58, compare:null, art:["jar","jarOpen"],
+    clinical:[["+42%","barrier hydration at 4 wks*"],["3:1:1","skin-identical ratio"],["50ml","glass jar"]],
+    optLabel:"Texture", opts:["Original","Rich (dry skin)"],
+    details:[
+      ["Key actives","Ceramides NP, AP and EOP in a 3:1:1 ratio with cholesterol and fatty acids — the ratio your barrier is built from."],
+      ["How to use","Final step, morning and night. A pea-sized amount pressed over serum."]
+    ], pairs:["serum","eye"] },
+  { id:"vitc", tags:["bright"], featured:0, badge:"Back in stock", rate:4.7, votes:98,
+    eyebrow:"Morning antioxidant · 15% THD", name:"Vitamin C Brightening Drops",
+    sub:"Stabilized THD ascorbate at 15% — fades dark spots without the sting or the smell of classic L-AA.",
+    price:54, compare:null, art:["vitc","swatch"],
+    clinical:[["−27%","dark-spot intensity at 8 wks*"],["15%","THD ascorbate"],["0","sting or oxidation"]],
+    optLabel:"Size", opts:["30ml"],
+    details:[
+      ["Key actives","15% tetrahexyldecyl ascorbate (oil-soluble vitamin C), 1% vitamin E, 0.5% ferulic acid."],
+      ["How to use","Mornings, 3–4 drops before moisturizer and SPF. Plays well with retinal — C in the AM, A in the PM."]
+    ], pairs:["spf","serum"] },
+  { id:"cleanser", tags:["barrier"], featured:0, badge:"Step one", rate:4.8, votes:143,
+    eyebrow:"AM + PM · pH 5.5", name:"Gentle Enzyme Cleanser",
+    sub:"Papaya enzymes dissolve the day without stripping — the low-drama first step your actives need.",
+    price:32, compare:null, art:["cleanser"],
+    clinical:[["5.5","skin-matched pH"],["0%","sulfates or soap"],["150ml","3-month supply"]],
+    optLabel:"Size", opts:["150ml"],
+    details:[
+      ["Key actives","Papain enzyme complex, glycerin 6%, oat beta-glucan. Removes SPF and light makeup in one pass."],
+      ["How to use","Massage onto damp skin for 30 seconds, rinse warm. Dry fully before actives."]
+    ], pairs:["serum","vitc"] },
+  { id:"spf", tags:["protect"], featured:0, badge:"Non-negotiable", rate:4.6, votes:121,
+    eyebrow:"Every morning · SPF 50 PA++++", name:"Day Veil SPF 50",
+    sub:"Invisible broad-spectrum filters that don't pill over your routine — the step that makes retinal safe.",
+    price:44, compare:null, art:["spf"],
+    clinical:[["SPF 50","PA++++ broad spectrum"],["0","white cast, all tones"],["1/4 tsp","face + neck dose"]],
+    optLabel:"Finish", opts:["Natural","Dewy"],
+    details:[
+      ["Filters","New-generation UVA/UVB filters in an elegant, fragrance-free base that layers cleanly over the routine."],
+      ["How to use","Final AM step. A quarter teaspoon for face and neck, reapplied at midday if outdoors."]
+    ], pairs:["vitc","cream"] },
+  { id:"set", tags:["lines","firm","barrier","bright","protect"], featured:0, badge:"Save 18%", rate:5.0, votes:67,
+    eyebrow:"Everything · One box", name:"The Complete Routine",
+    sub:"All four core steps — cleanser, retinal serum, eye cream and barrier cream — boxed and sequenced.",
+    price:172, compare:210, art:["set","serum","jar"],
+    clinical:[["4","full-size products"],["18%","saved vs. separates"],["90","days of routine"]],
+    optLabel:"Edition", opts:["Core routine","+ SPF 50 (+$36)"],
+    details:[
+      ["What's inside","Gentle Enzyme Cleanser 150ml, Retinal Renewal Serum 30ml, Peptide Eye Cream 15ml, Ceramide Recovery Cream 50ml — with a week-by-week onboarding card."],
+      ["Who it's for","Anyone starting from zero, or replacing a shelf of half-used products with four that are sequenced to work together."]
+    ], pairs:["spf","mist"] },
+];
+/* mist exists only as cross-sell art fallback */
+const EXTRA = { mist:{ id:"mist", name:"HA Plumping Mist", price:36, art:["mist"], rate:4.5, votes:44, sub:"Hyaluronic mist.", badge:"Coming soon", eyebrow:"", tags:[], opts:["100ml"], optLabel:"Size", clinical:[], details:[], pairs:[] } };
+const FIND = id => CATALOG.find(p=>p.id===id) || EXTRA[id];
+
+const fmt = n => "$" + n.toFixed(2);
+const OPT_EXTRA = {"50ml (+$34)":34, "AM + PM duo (+$40)":40, "+ SPF 50 (+$36)":36};
+const FREE_SHIP = 75;
+let cart = [];        // {id, opt, sub, qty}
+let current = null, selOpt = 0, qty = 1, shipCost = 6, discOn = false;
+
+/* ---------- card builder ---------- */
+function starRow(p){ return `<div class="rating"><b>★</b> ${p.rate.toFixed(1)} <span>(${p.votes})</span></div>`; }
+function makeCard(p){
+  const el = document.createElement("article");
+  el.className = "card";
+  el.innerHTML = `
+    <span class="badge">${p.badge}</span>
+    <button class="art" aria-label="View ${p.name}">${ART[p.art[0]]("card"+p.id)}</button>
+    <div class="card-body">
+      <h3>${p.name}</h3>
+      ${starRow(p)}
+      <div class="sub">${p.sub.split("—")[0].split(" that")[0].trim()}</div>
+      <div class="card-foot">
+        <span class="price">${fmt(p.price)}${p.compare?`<s>${fmt(p.compare)}</s>`:""}</span>
+        <button class="add-btn" aria-label="Add ${p.name} to bag">Add</button>
+      </div>
+    </div>`;
+  el.querySelector(".art").addEventListener("click",()=>openProduct(p.id));
+  el.querySelector(".add-btn").addEventListener("click",()=>addToCart(p.id, p.opts[0], false, 1));
+  return el;
+}
+
+/* featured on home */
+const featGrid = document.getElementById("featGrid");
+CATALOG.filter(p=>p.featured).forEach(p=>featGrid.appendChild(makeCard(p)));
+
+/* ---------- collection ---------- */
+const FILTERS = [["all","All"],["lines","Fine lines"],["firm","Firmness"],["bright","Brightening"],["barrier","Barrier"],["protect","Protection"]];
+let curFilter = "all", curSort = "feat";
+const filterRow = document.getElementById("filterRow");
+FILTERS.forEach(([k,label])=>{
+  const b = document.createElement("button");
+  b.className="chip"; b.textContent=label;
+  b.setAttribute("aria-pressed", k==="all" ? "true":"false");
+  b.addEventListener("click",()=>{
+    curFilter=k;
+    filterRow.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed","false"));
+    b.setAttribute("aria-pressed","true");
+    renderShop();
+  });
+  filterRow.appendChild(b);
+});
+const sortSel = document.createElement("select");
+sortSel.setAttribute("aria-label","Sort products");
+sortSel.innerHTML = `<option value="feat">Featured</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option><option value="rate">Top rated</option>`;
+sortSel.addEventListener("change",()=>{curSort=sortSel.value; renderShop();});
+filterRow.appendChild(sortSel);
+
+function renderShop(){
+  let list = CATALOG.filter(p=>curFilter==="all"||p.tags.includes(curFilter));
+  if(curSort==="lo") list=[...list].sort((a,b)=>a.price-b.price);
+  if(curSort==="hi") list=[...list].sort((a,b)=>b.price-a.price);
+  if(curSort==="rate") list=[...list].sort((a,b)=>b.rate-a.rate);
+  const g = document.getElementById("shopGrid");
+  g.innerHTML="";
+  list.forEach(p=>g.appendChild(makeCard(p)));
+  document.getElementById("collCount").textContent = list.length + (list.length===1?" product":" products");
+}
+renderShop();
+
+/* ---------- views ---------- */
+function go(view){
+  document.querySelectorAll(".view").forEach(v=>v.classList.remove("active"));
+  document.getElementById("view-"+view).classList.add("active");
+  window.scrollTo({top:0});
+}
+function openProduct(id){
+  current = FIND(id); selOpt = 0; qty = 1;
+  if(!current.clinical.length){ toast("Coming soon"); return; }
+  document.getElementById("crumbName").textContent = current.name;
+  document.getElementById("pdpEyebrow").textContent = current.eyebrow;
+  document.getElementById("pdpName").textContent = current.name;
+  document.getElementById("pdpRating").innerHTML = `<b style="color:var(--gold);letter-spacing:1px">★★★★★</b> <span style="color:var(--ink-2);font-size:.82rem">${current.rate.toFixed(1)} · ${current.votes} reviews</span>`;
+  document.getElementById("pdpSub").textContent = current.sub;
+  document.getElementById("pdpPrice").innerHTML = `${fmt(current.price)}${current.compare?`<s>${fmt(current.compare)}</s>`:""}`;
+  document.getElementById("pdpClinical").innerHTML = current.clinical.map(c=>`<div><strong>${c[0]}</strong>${c[1]}</div>`).join("");
+  document.getElementById("pdpQty").textContent = qty;
+  const main = document.getElementById("galleryMain");
+  const thumbs = document.getElementById("thumbs");
+  main.innerHTML = ART[current.art[0]]("m0");
+  thumbs.innerHTML = "";
+  current.art.forEach((a,i)=>{
+    const b = document.createElement("button");
+    b.setAttribute("role","tab");
+    b.setAttribute("aria-selected", i===0 ? "true":"false");
+    b.setAttribute("aria-label","Image "+(i+1));
+    b.innerHTML = ART[a]("th"+i);
+    b.addEventListener("click",()=>{
+      main.innerHTML = ART[a]("m"+i);
+      thumbs.querySelectorAll("button").forEach(x=>x.setAttribute("aria-selected","false"));
+      b.setAttribute("aria-selected","true");
+    });
+    thumbs.appendChild(b);
+  });
+  const optWrap = document.getElementById("pdpOpts");
+  optWrap.innerHTML = `<span class="opt-label">${current.optLabel}</span>`;
+  const row = document.createElement("div"); row.className="opts";
+  current.opts.forEach((o,i)=>{
+    const b = document.createElement("button");
+    b.textContent = o;
+    b.setAttribute("aria-pressed", i===0 ? "true":"false");
+    b.addEventListener("click",()=>{
+      selOpt = i;
+      row.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed","false"));
+      b.setAttribute("aria-pressed","true");
+    });
+    row.appendChild(b);
+  });
+  optWrap.appendChild(row);
+  document.querySelectorAll('#subBox input')[0].checked = true;
+  document.querySelectorAll('#subBox .sub-opt').forEach((l,i)=>l.classList.toggle("on", i===0));
+  document.getElementById("pdpDetails").innerHTML =
+    current.details.map(d=>`<details><summary>${d[0]}</summary><p>${d[1]}</p></details>`).join("");
+  const pg = document.getElementById("pairGrid");
+  pg.innerHTML="";
+  current.pairs.map(FIND).filter(Boolean).forEach(p=>{ if(p.clinical) pg.appendChild(makeCard(p)); });
+  go("product");
+}
+document.querySelectorAll('#subBox input').forEach(r=>{
+  r.addEventListener("change",()=>{
+    document.querySelectorAll('#subBox .sub-opt').forEach(l=>l.classList.toggle("on", l.querySelector("input").checked));
+  });
+});
+function pdpQty(d){ qty = Math.max(1, qty+d); document.getElementById("pdpQty").textContent = qty; }
+document.getElementById("pdpAdd").addEventListener("click",()=>{
+  const sub = document.querySelector('#subBox input:checked').value === "sub";
+  addToCart(current.id, current.opts[selOpt], sub, qty);
+});
+
+/* ---------- cart ---------- */
+function unitPrice(l){
+  const p = FIND(l.id);
+  let u = p.price + (OPT_EXTRA[l.opt]||0);
+  if(l.sub) u *= .85;
+  return u;
+}
+function addToCart(id, opt, sub, n){
+  const found = cart.find(l=>l.id===id && l.opt===opt && l.sub===sub);
+  if(found) found.qty += n;
+  else cart.push({id, opt, sub, qty:n});
+  renderCart();
+  toast("Added to bag");
+  toggleCart(true);
+}
+function changeQty(i, d){
+  cart[i].qty += d;
+  if(cart[i].qty <= 0) cart.splice(i,1);
+  renderCart();
+}
+function cartSubtotal(){ return cart.reduce((s,l)=>s+unitPrice(l)*l.qty,0); }
+function renderCart(){
+  const wrap = document.getElementById("cartItems");
+  const count = cart.reduce((s,l)=>s+l.qty,0);
+  document.getElementById("bagCount").textContent = count;
+  const sub = cartSubtotal();
+  const bar = document.getElementById("shipBar");
+  if(sub<=0) bar.innerHTML = `Free U.S. shipping on orders over ${fmt(FREE_SHIP)}.<div class="meter"><i style="width:0%"></i></div>`;
+  else if(sub>=FREE_SHIP) bar.innerHTML = `<span class="ok">You've unlocked free shipping.</span><div class="meter"><i style="width:100%"></i></div>`;
+  else bar.innerHTML = `You're <b class="mono">${fmt(FREE_SHIP-sub)}</b> away from free shipping.<div class="meter"><i style="width:${Math.round(sub/FREE_SHIP*100)}%"></i></div>`;
+  if(!cart.length){
+    wrap.innerHTML = `<div class="empty-cart"><p>Your bag is empty.</p><p style="font-size:.85rem">Your skin, however, is keeping score.</p></div>`;
+    document.getElementById("subtotal").textContent = fmt(0);
+    return;
+  }
+  wrap.innerHTML = "";
+  cart.forEach((l,i)=>{
+    const p = FIND(l.id);
+    const el = document.createElement("div");
+    el.className = "line-item";
+    el.innerHTML = `
+      <div class="mini">${ART[p.art[0]]("li"+i)}</div>
+      <div>
+        <h4>${p.name}</h4>
+        <div class="sub">${l.opt}${l.sub?" · Subscription (−15%)":""}</div>
+        <div class="qty">
+          <button aria-label="Decrease quantity">−</button><span>${l.qty}</span><button aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+      <div class="li-price mono">${fmt(unitPrice(l)*l.qty)}</div>`;
+    const [dec,inc] = el.querySelectorAll(".qty button");
+    dec.addEventListener("click",()=>changeQty(i,-1));
+    inc.addEventListener("click",()=>changeQty(i,1));
+    wrap.appendChild(el);
+  });
+  document.getElementById("subtotal").textContent = fmt(sub);
+}
+function toggleCart(open){
+  document.getElementById("drawer").classList.toggle("open", open);
+  document.getElementById("scrim").classList.toggle("open", open);
+  document.getElementById("drawer").setAttribute("aria-hidden", String(!open));
+}
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") toggleCart(false); });
+
+/* ---------- checkout ---------- */
+function goCheckout(){
+  if(!cart.length){ toast("Your bag is empty"); return; }
+  toggleCart(false);
+  renderSummary();
+  go("checkout");
+}
+function setShip(input){
+  shipCost = input.value==="14" ? 14 : (cartSubtotal()>=FREE_SHIP ? 0 : 6);
+  document.querySelectorAll(".ship-opt").forEach(l=>l.classList.toggle("on", l.querySelector("input").checked));
+  renderSummary();
+}
+function applyDisc(){
+  const v = document.getElementById("disc").value.trim().toUpperCase();
+  if(v==="RENEW20"){
+    if(cartSubtotal()>=100){ discOn = true; toast("Code applied — 20% off"); }
+    else toast("RENEW20 needs a $100+ subtotal");
+  } else if(v){ discOn=false; toast("That code isn't valid"); }
+  renderSummary();
+}
+function renderSummary(){
+  const sub = cartSubtotal();
+  const std = sub>=FREE_SHIP ? 0 : 6;
+  document.getElementById("stdShip").textContent = std===0 ? "Free" : fmt(std);
+  const shipSel = document.querySelector('input[name="ship"]:checked').value;
+  shipCost = shipSel==="14" ? 14 : std;
+  const disc = discOn && sub>=100 ? sub*.2 : 0;
+  document.getElementById("discLine").style.display = disc>0 ? "flex":"none";
+  document.getElementById("sumDisc").textContent = "−"+fmt(disc);
+  document.getElementById("sumItems").innerHTML = cart.map((l,i)=>{
+    const p = FIND(l.id);
+    return `<div class="sum-line"><div class="mini">${ART[p.art[0]]("su"+i)}<i>${l.qty}</i></div><div>${p.name}<div style="color:var(--ink-2);font-size:.76rem">${l.opt}${l.sub?" · Sub":""}</div></div><span class="amt mono">${fmt(unitPrice(l)*l.qty)}</span></div>`;
+  }).join("");
+  document.getElementById("sumSub").textContent = fmt(sub);
+  document.getElementById("sumShip").textContent = shipCost===0 ? "Free" : fmt(shipCost);
+  document.getElementById("sumTotal").textContent = fmt(sub - disc + shipCost);
+}
+
+/* ---------- toast ---------- */
+let toastTimer;
+function toast(msg){
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove("show"), 2600);
+}
+renderCart();
+
+/* ---------- motion layer (21st.dev effects, vanilla port) ---------- */
+const RM = matchMedia("(prefers-reduced-motion: reduce)");
+
+/* showcase card fan — click any card to open its PDP */
+const fanWrap = document.getElementById("fan");
+if(fanWrap){
+  ["cleanser","eye","serum","cream","spf"].forEach((id,i)=>{
+    const p = FIND(id);
+    const b = document.createElement("button");
+    b.className = "fan-card";
+    b.setAttribute("aria-label","View "+p.name);
+    b.innerHTML = ART[p.art[0]]("fan"+i);
+    b.addEventListener("click",()=>openProduct(id));
+    fanWrap.appendChild(b);
+  });
+}
+
+/* count-up price — animates once when scrolled into view */
+const cu = document.getElementById("countUp");
+if(cu){
+  const cuIO = new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting) return;
+      cuIO.disconnect();
+      const target = 172;
+      if(RM.matches){ cu.textContent = target; return; }
+      const t0 = performance.now(), dur = 900;
+      const tick = n=>{
+        const p = Math.min((n-t0)/dur, 1);
+        cu.textContent = Math.round((1-Math.pow(1-p,3))*target);
+        if(p<1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    });
+  },{threshold:.4});
+  cuIO.observe(cu);
+}
+
+/* scroll reveals — fade up once, children staggered 60ms apart */
+[".props",".ritual",".press",".newsletter",".spotlight","#shelf .sec-head","#reviews .sec-head"].forEach(sel=>
+  document.querySelectorAll(sel).forEach(el=>el.classList.add("reveal")));
+document.querySelectorAll("#reviews .review").forEach((el,i)=>{ el.classList.add("reveal"); el.style.transitionDelay = (i*60)+"ms"; });
+document.querySelectorAll("#featGrid .card").forEach((el,i)=>{ el.classList.add("reveal"); el.style.transitionDelay = (i*60)+"ms"; });
+const revIO = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){ e.target.classList.add("in"); revIO.unobserve(e.target); }
+}),{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>revIO.observe(el));
+
+/* PDP gallery — cursor 3D tilt (±6°), settles back on leave */
+const gal = document.getElementById("galleryMain");
+if(gal){
+  gal.addEventListener("pointermove",e=>{
+    if(RM.matches) return;
+    const r = gal.getBoundingClientRect();
+    const x = (e.clientX-r.left)/r.width - .5, y = (e.clientY-r.top)/r.height - .5;
+    gal.style.transform = `perspective(900px) rotateX(${(-y*6).toFixed(2)}deg) rotateY(${(x*6).toFixed(2)}deg)`;
+  });
+  gal.addEventListener("pointerleave",()=>{ gal.style.transform = ""; });
+}
+</script>
