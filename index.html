@@ -1400,9 +1400,9 @@ const revIO = new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el=>revIO.observe(el));
 
-/* hero + banner photography — wide landscape crop for the full-width hero */
+/* hero + banner photography — wide landscape crop, product-focused (no hands) */
 document.querySelector(".hero-art").innerHTML =
-  `<img src="https://images.unsplash.com/photo-1552046122-03184de85e08?w=1600&q=80&auto=format&fit=crop" alt="Skincare products arranged on a table" fetchpriority="high">`;
+  `<img src="https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?w=1600&h=686&q=80&auto=format&fit=crop" alt="Éterne creams, serums and jars arranged on marble" fetchpriority="high">`;
 
 /* sticky mobile CTA — appears once the hero scrolls away, home view only */
 const sCta = document.getElementById("stickyCta");
