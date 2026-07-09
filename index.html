@@ -1,3 +1,4 @@
+<meta charset="utf-8">
 <title>ÉTERNE — Clinical Anti-Aging Skincare</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -162,7 +163,7 @@
   .controls{display:flex; gap:10px; align-items:center; flex-wrap:wrap; padding:22px 0; position:sticky; top:62px; background:var(--paper); z-index:20}
   .chip{
     border:1px solid var(--line); background:var(--card); border-radius:99px; padding:9px 18px;
-    font-size:.84rem; color:var(--ink-2); min-height:40px;
+    font-size:.84rem; color:var(--ink-2); min-height:40px; white-space:nowrap; flex-shrink:0;
   }
   .chip[aria-pressed="true"]{background:var(--accent-soft); border-color:var(--accent); color:var(--accent); font-weight:600}
   .controls select{
@@ -353,6 +354,44 @@
   .drawer-foot .fine{font-size:.75rem; color:var(--ink-2); margin:0 0 14px}
   .drawer-foot .btn{width:100%}
 
+  /* ---------- mobile polish ---------- */
+  .m-nav{display:none}
+  @media(max-width:700px){
+    nav.m-nav{display:flex; gap:22px; overflow-x:auto; padding:0 20px 10px; margin-left:0; scrollbar-width:none}
+    nav.m-nav::-webkit-scrollbar{display:none}
+    nav.m-nav a{color:var(--ink-2); text-decoration:none; white-space:nowrap; font-size:.85rem; padding:2px 0}
+    .controls{flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+    .controls::-webkit-scrollbar{display:none}
+    .controls select{margin-left:0}
+    .controls{top:102px}
+  }
+  @media(max-width:600px){
+    .blob-1{width:280px; height:280px; right:-110px; top:-80px}
+    .blob-2{width:230px; height:230px; left:-110px}
+    .hero{padding:36px 0 30px}
+    section{padding:44px 0}
+  }
+  @media(max-width:520px){
+    .card-body{padding:13px 14px 15px; gap:4px}
+    .card-body h3{font-size:1rem}
+    .card-body .sub{font-size:.78rem}
+    .card-body .rating{font-size:.72rem}
+    .add-btn{padding:8px 13px; font-size:.78rem; min-height:36px}
+    .card .price{font-size:.86rem}
+    .card .price s{display:none}
+    .badge{top:10px; left:10px; padding:4px 10px; font-size:.58rem}
+    .grid4{gap:12px}
+    .grid3{gap:14px}
+    .ritual{padding:32px 20px}
+    .spotlight{padding:32px 20px}
+    .newsletter{padding:36px 20px}
+    .announce{font-size:.66rem; letter-spacing:.06em}
+    .hero-meta{gap:20px}
+  }
+  @media(max-width:899px){
+    .summary{position:static; order:-1}
+  }
+
   /* ---------- motion language (locked tokens) ---------- */
   :root{ --ease:cubic-bezier(.22,1,.36,1); --ease-lux:cubic-bezier(.25,.46,.45,.94); }
   .rise{opacity:0; transform:translateY(20px); animation:rise .55s var(--ease-lux) forwards}
@@ -416,12 +455,14 @@
     .fan-card:nth-child(1){--x:-98px; --y:20px} .fan-card:nth-child(2){--x:-49px}
     .fan-card:nth-child(4){--x:49px}  .fan-card:nth-child(5){--x:98px; --y:20px}
   }
-  @media(max-width:520px){
-    .fan{width:118px; height:162px}
-    .fan-stage{min-height:270px}
-    .fan-card:nth-child(1){--x:-72px; --y:16px} .fan-card:nth-child(2){--x:-36px; --y:5px}
-    .fan-card:nth-child(4){--x:36px; --y:5px}  .fan-card:nth-child(5){--x:72px; --y:16px}
-    .fan .fan-card:hover{transform:rotate(0deg) translate(var(--x), calc(var(--y) - 10px)) scale(1.04)}
+  /* touch screens can't hover a fan — become a swipeable card row */
+  @media (hover:none), (max-width:700px){
+    .fan-stage{min-height:0; place-items:stretch}
+    .fan{width:auto; height:auto; display:flex; gap:12px; overflow-x:auto; padding:6px 2px 14px;
+         scroll-snap-type:x mandatory; scrollbar-width:none; -webkit-overflow-scrolling:touch}
+    .fan::-webkit-scrollbar{display:none}
+    .fan-card{position:relative; inset:auto; flex:0 0 118px; height:158px;
+              transform:none !important; scroll-snap-align:center; animation:none; opacity:1 !important}
   }
 
   /* routine spotlight (count-up price) */
@@ -470,6 +511,12 @@
       Bag <span class="bag-count" id="bagCount">0</span>
     </button>
   </div>
+  <nav class="m-nav" aria-label="Mobile">
+    <a href="#" onclick="go('shop');return false">Shop all</a>
+    <a href="#shelf" onclick="go('home')">Bestsellers</a>
+    <a href="#ritual" onclick="go('home')">The Routine</a>
+    <a href="#reviews" onclick="go('home')">Results</a>
+  </nav>
 </header>
 
 <main id="main">
@@ -568,7 +615,7 @@
       <div class="spot-copy">
         <span class="eyebrow">The complete routine</span>
         <h2>Four steps. <em>One box.</em></h2>
-        <p>Cleanser, retinal serum, eye cream and barrier cream — sequenced to work together, with a week-by-week onboarding card. Hover the lineup; click any product to inspect it.</p>
+        <p>Cleanser, retinal serum, eye cream and barrier cream — sequenced to work together, with a week-by-week onboarding card. Tap any product in the lineup to inspect it.</p>
         <span class="spot-price">$<span id="countUp">0</span><s>$210</s></span>
         <div class="cta-row" style="margin-top:20px">
           <button class="btn btn-primary" onclick="addToCart('set','Core routine',false,1)">Add the routine — save 18%</button>
