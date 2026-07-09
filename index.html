@@ -8,6 +8,7 @@
     --ink:#252A31; --ink-2:#7B7A6F; --line:#E7E1D3;
     --accent:#24466B; --accent-deep:#18324E; --gold:#AD8A4B; --accent-contrast:#FFFFFF;
     --shadow:0 16px 44px rgba(37,42,49,.08);
+    --mesh:color-mix(in srgb, #24466B 9%, transparent);
     --ok:#4C7A4C;
   }
   @media (prefers-color-scheme: dark){
@@ -17,6 +18,7 @@
       --ink:#EEF0F4; --ink-2:#A3A8B3; --line:#333D4D;
       --accent:#8FB4DC; --accent-deep:#A9C6E7; --gold:#D2B47E; --accent-contrast:#141922;
       --shadow:0 16px 44px rgba(0,0,0,.45);
+      --mesh:color-mix(in srgb, #8FB4DC 24%, transparent);
       --ok:#8CBA8C;
     }
   }
@@ -26,6 +28,7 @@
     --ink:#EEF0F4; --ink-2:#A3A8B3; --line:#333D4D;
     --accent:#8FB4DC; --accent-deep:#A9C6E7; --gold:#D2B47E; --accent-contrast:#141922;
     --shadow:0 16px 44px rgba(0,0,0,.45);
+    --mesh:color-mix(in srgb, #8FB4DC 24%, transparent);
     --ok:#8CBA8C;
   }
   :root[data-theme="light"]{
@@ -34,6 +37,7 @@
     --ink:#252A31; --ink-2:#7B7A6F; --line:#E7E1D3;
     --accent:#24466B; --accent-deep:#18324E; --gold:#AD8A4B; --accent-contrast:#FFFFFF;
     --shadow:0 16px 44px rgba(37,42,49,.08);
+    --mesh:color-mix(in srgb, #24466B 9%, transparent);
     --ok:#4C7A4C;
   }
   *{box-sizing:border-box}
@@ -87,16 +91,20 @@
   }
 
   main{max-width:1180px; margin:0 auto; padding:0 20px}
-  section{padding:56px 0}
+  section{padding:44px 0}
 
   /* ---------- hero ---------- */
-  .hero{display:grid; gap:36px; padding:48px 0 40px; align-items:center}
+  .hero{display:grid; gap:28px; padding:36px 0 32px; align-items:center}
   @media(min-width:820px){
-    .hero{grid-template-columns:.92fr 1.08fr; gap:64px; padding:76px 0 64px}
+    .hero{grid-template-columns:1fr .9fr; gap:56px; padding:56px 0 48px}
     .hero-art{order:-1}
   }
-  .hero h1{font-size:clamp(2.5rem, 6vw, 4.3rem)}
-  .hero p.lede{max-width:46ch; color:var(--ink-2); font-size:1.05rem; margin:22px 0 30px}
+  .hero h1{font-size:clamp(2.1rem, 5.2vw, 3.5rem)}
+  .hero-rating{margin-top:12px; font-size:.85rem; color:var(--ink-2)}
+  .hero-rating b{color:var(--gold); letter-spacing:2px; font-size:.8rem}
+  .hero p.lede{max-width:46ch; color:var(--ink-2); font-size:1rem; margin:14px 0 22px}
+  .link-quiet{align-self:center; font-size:.9rem; color:var(--ink-2); text-decoration:underline; text-underline-offset:4px; padding:8px 4px}
+  .link-quiet:hover{color:var(--ink)}
   .cta-row{display:flex; gap:12px; flex-wrap:wrap}
   .btn{
     display:inline-flex; align-items:center; justify-content:center; gap:8px;
@@ -109,10 +117,11 @@
   .btn-primary:hover{background:var(--accent-deep)}
   .btn-ghost{border-color:var(--line); color:var(--ink); background:transparent}
   .btn-ghost:hover{border-color:var(--accent)}
-  .hero-art{background:linear-gradient(160deg, var(--art1), var(--art2)); border-radius:20px; padding:9%; box-shadow:var(--shadow)}
-  .hero-meta{display:flex; gap:32px; margin-top:38px; padding-top:22px; border-top:1px solid var(--line); flex-wrap:wrap}
-  .hero-meta div{font-size:.8rem; color:var(--ink-2); max-width:15ch}
-  .hero-meta strong{display:block; color:var(--accent); font-size:1.5rem; font-family:Didot,"Bodoni MT",Georgia,serif; font-weight:400; font-variant-numeric:tabular-nums}
+  .hero-art{background:linear-gradient(160deg, var(--art1), var(--art2)); border-radius:18px; padding:6%; box-shadow:var(--shadow); max-width:420px}
+  @media(max-width:819px){ .hero-art{max-width:320px; width:100%; margin:0 auto} }
+  .hero-meta{display:flex; gap:28px; margin-top:28px; padding-top:18px; border-top:1px solid var(--line); flex-wrap:wrap}
+  .hero-meta div{font-size:.78rem; color:var(--ink-2); max-width:15ch}
+  .hero-meta strong{display:block; color:var(--accent); font-size:1.2rem; font-family:Didot,"Bodoni MT",Georgia,serif; font-weight:400; font-variant-numeric:tabular-nums}
 
   /* ---------- value props ---------- */
   .props{display:grid; grid-template-columns:repeat(2,1fr); gap:18px; border-block:1px solid var(--line); padding:26px 0}
@@ -135,7 +144,7 @@
     transition:transform .18s ease, box-shadow .18s ease; display:flex; flex-direction:column; position:relative;
   }
   .card:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-color:var(--gold)}
-  .card .art{background:linear-gradient(170deg, var(--art1), var(--art2)); padding:12% 20%; cursor:pointer; border:none; width:100%}
+  .card .art{background:linear-gradient(170deg, var(--art1), var(--art2)); padding:8% 24%; cursor:pointer; border:none; width:100%}
   .card-body{padding:18px 20px 20px; display:flex; flex-direction:column; gap:5px; flex:1}
   .card-body h3{font-size:1.18rem}
   .card-body .sub{color:var(--ink-2); font-size:.83rem}
@@ -173,8 +182,8 @@
   .count{font-size:.78rem; color:var(--ink-2); padding-bottom:16px}
 
   /* ---------- routine ---------- */
-  .ritual{background:var(--card); border:1px solid var(--line); border-radius:22px; padding:44px 28px}
-  @media(min-width:820px){ .ritual{padding:60px} }
+  .ritual{background:var(--card); border:1px solid var(--line); border-radius:20px; padding:34px 24px}
+  @media(min-width:820px){ .ritual{padding:44px 48px} }
   .steps{display:grid; gap:30px; margin-top:34px}
   @media(min-width:680px){ .steps{grid-template-columns:repeat(3,1fr)} }
   .step .n{color:var(--gold); font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; display:block; margin-bottom:10px; font-weight:700}
@@ -201,7 +210,7 @@
   /* ---------- newsletter ---------- */
   .newsletter{
     background:linear-gradient(160deg, var(--wash), var(--accent-soft));
-    border-radius:22px; padding:48px 28px; text-align:center;
+    border-radius:20px; padding:38px 24px; text-align:center;
   }
   .newsletter h2{font-size:clamp(1.6rem,3.4vw,2.2rem)}
   .newsletter p{color:var(--ink-2); max-width:46ch; margin:12px auto 24px}
@@ -237,7 +246,7 @@
   .crumbs button{background:none;border:none;color:var(--accent);padding:0;font-size:.82rem;text-decoration:underline}
   .pdp{display:grid; gap:36px; padding:24px 0 40px}
   @media(min-width:820px){ .pdp{grid-template-columns:1.05fr .95fr; gap:60px; padding:32px 0 56px} }
-  .gallery-main{background:linear-gradient(165deg, var(--art1), var(--art2)); border-radius:20px; padding:9% 18%; box-shadow:var(--shadow); transition:transform .25s var(--ease); will-change:transform}
+  .gallery-main{background:linear-gradient(165deg, var(--art1), var(--art2)); border-radius:18px; padding:7% 23%; box-shadow:var(--shadow); transition:transform .25s var(--ease); will-change:transform}
   .thumbs{display:flex; gap:10px; margin-top:12px}
   .thumbs button{background:var(--art1); border:1.5px solid var(--line); border-radius:14px; width:74px; height:74px; padding:12px; transition:border-color .15s}
   .thumbs button[aria-selected="true"]{border-color:var(--accent)}
@@ -355,6 +364,17 @@
   .drawer-foot .btn{width:100%}
 
   /* ---------- mobile polish ---------- */
+  .sticky-cta{
+    position:fixed; left:16px; right:16px; bottom:calc(14px + env(safe-area-inset-bottom));
+    z-index:50; display:none; text-align:center; background:var(--accent); color:var(--accent-contrast);
+    border-radius:99px; padding:15px; font-weight:600; font-size:.95rem; text-decoration:none;
+    box-shadow:0 12px 30px rgba(0,0,0,.22);
+  }
+  @media(max-width:700px){ .sticky-cta.show{display:block} }
+  @media(max-width:520px){
+    .hero .cta-row{flex-direction:column; align-items:stretch}
+    .hero .cta-row .link-quiet{text-align:center}
+  }
   .m-nav{display:none}
   @media(max-width:700px){
     nav.m-nav{display:flex; gap:22px; overflow-x:auto; padding:0 20px 10px; margin-left:0; scrollbar-width:none}
@@ -403,11 +423,11 @@
   .hero{position:relative}
   .hero::before{
     content:""; position:absolute; inset:-24px -40px 0;
-    background-image:linear-gradient(to right, color-mix(in srgb, var(--accent) 7%, transparent) 1px, transparent 1px),
-                     linear-gradient(to bottom, color-mix(in srgb, var(--accent) 7%, transparent) 1px, transparent 1px);
+    background-image:linear-gradient(to right, var(--mesh) 1px, transparent 1px),
+                     linear-gradient(to bottom, var(--mesh) 1px, transparent 1px);
     background-size:56px 56px;
-    -webkit-mask-image:radial-gradient(ellipse 60% 55% at 50% 0%, #000 60%, transparent 100%);
-    mask-image:radial-gradient(ellipse 60% 55% at 50% 0%, #000 60%, transparent 100%);
+    -webkit-mask-image:radial-gradient(ellipse 70% 65% at 50% 0%, #000 65%, transparent 100%);
+    mask-image:radial-gradient(ellipse 70% 65% at 50% 0%, #000 65%, transparent 100%);
     pointer-events:none;
   }
   .hero>div{position:relative; z-index:1}
@@ -428,7 +448,7 @@
   @keyframes shine{to{transform:skewX(-20deg) translateX(560%)}}
 
   /* showcase card fan (:has() hover choreography) */
-  .fan-stage{display:grid; place-items:center; min-height:380px}
+  .fan-stage{display:grid; place-items:center; min-height:320px}
   .fan{position:relative; width:170px; height:230px}
   .fan-card{
     position:absolute; inset:0; background:linear-gradient(170deg, var(--art1), var(--art2)); border:1px solid var(--line); border-radius:16px;
@@ -466,8 +486,8 @@
   }
 
   /* routine spotlight (count-up price) */
-  .spotlight{display:grid; gap:36px; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:22px; padding:40px 24px}
-  @media(min-width:820px){ .spotlight{grid-template-columns:.95fr 1.05fr; padding:48px 56px} }
+  .spotlight{display:grid; gap:28px; align-items:center; background:var(--card); border:1px solid var(--line); border-radius:20px; padding:30px 22px}
+  @media(min-width:820px){ .spotlight{grid-template-columns:.95fr 1.05fr; padding:38px 46px} }
   .spot-copy h2{font-size:clamp(1.7rem,3.6vw,2.4rem)}
   .spot-copy p{color:var(--ink-2); max-width:48ch; margin:14px 0 20px}
   .spot-price{font-family:ui-monospace,Consolas,monospace; font-weight:600; font-size:1.35rem; font-variant-numeric:tabular-nums}
@@ -528,10 +548,11 @@
     <div>
       <span class="eyebrow rise">Clinical actives · Measured results</span>
       <h1 class="rise" style="animation-delay:.1s">Age is a fact. <em>Looking it</em> is optional.</h1>
-      <p class="lede rise" style="animation-delay:.2s">Clinically dosed retinal, peptides and ceramides — published percentages, measured results, nothing perfumed and nothing padded.</p>
-      <div class="cta-row rise" style="animation-delay:.3s">
-        <a class="btn btn-primary" href="#" onclick="go('shop');return false">Shop all products</a>
-        <a class="btn btn-ghost" href="#ritual">See the routine</a>
+      <div class="hero-rating rise" style="animation-delay:.18s" aria-label="Rated 4.9 out of 5 from 559 reviews"><b>★★★★★</b> 4.9 · 559 verified reviews</div>
+      <p class="lede rise" style="animation-delay:.26s">Clinically dosed retinal, peptides and ceramides — published percentages, measured results, nothing perfumed and nothing padded.</p>
+      <div class="cta-row rise" style="animation-delay:.34s">
+        <a class="btn btn-primary" href="#" onclick="go('shop');return false">Shop bestsellers</a>
+        <a class="link-quiet" href="#ritual">See the 90-second routine →</a>
       </div>
       <div class="hero-meta rise" style="animation-delay:.4s">
         <div><strong>−31%</strong>wrinkle depth at 8 weeks*</div>
@@ -579,13 +600,6 @@
     </div>
   </section>
 
-  <div class="props">
-    <div class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z"/><circle cx="7" cy="17" r="1.6"/><circle cx="18" cy="17" r="1.6"/></svg><div><b>Free shipping</b>on orders over $75</div></div>
-    <div class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><div><b>60-day guarantee</b>results or refunded</div></div>
-    <div class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4c-4 5-6 7.5-6 10.5A6 6 0 0 0 18 14.5C18 11.5 16 9 12 4z"/></svg><div><b>Fragrance-free</b>no dyes, no fillers</div></div>
-    <div class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.5l2.3 2.3 4.7-5.1"/></svg><div><b>Dermatologist tested</b>on sensitive skin</div></div>
-  </div>
-
   <section id="shelf">
     <div class="sec-head">
       <div>
@@ -596,6 +610,13 @@
     </div>
     <div class="grid3" id="featGrid"></div>
   </section>
+
+  <div class="props">
+    <div class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 7h13v10H3zM16 10h3l2 3v4h-5z"/><circle cx="7" cy="17" r="1.6"/><circle cx="18" cy="17" r="1.6"/></svg><div><b>Free shipping</b>on orders over $75</div></div>
+    <div class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg><div><b>60-day guarantee</b>results or refunded</div></div>
+    <div class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4c-4 5-6 7.5-6 10.5A6 6 0 0 0 18 14.5C18 11.5 16 9 12 4z"/></svg><div><b>Fragrance-free</b>no dyes, no fillers</div></div>
+    <div class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M8.5 12.5l2.3 2.3 4.7-5.1"/></svg><div><b>Dermatologist tested</b>on sensitive skin</div></div>
+  </div>
 
   <section id="ritual">
     <div class="ritual">
@@ -623,11 +644,6 @@
       </div>
     </div>
   </section>
-
-  <div class="press" aria-label="Press mentions">
-    <span class="q">As featured in</span>
-    <span>Vogue</span><span>Allure</span><span>Bazaar</span><span>Elle</span><span>Byrdie</span>
-  </div>
 
   <div class="orn" aria-hidden="true"><i></i><b></b><i></i></div>
 
@@ -798,6 +814,8 @@
     <div class="pay" aria-label="Accepted payment methods"><span>VISA</span><span>MC</span><span>AMEX</span><span>PAYPAL</span><span>SHOP</span></div>
   </div>
 </footer>
+
+<a class="sticky-cta" id="stickyCta" href="#" onclick="go('shop');return false">Shop bestsellers</a>
 
 <!-- cart -->
 <div class="scrim" id="scrim" onclick="toggleCart(false)"></div>
@@ -1300,7 +1318,7 @@ if(cu){
 }
 
 /* scroll reveals — fade up once, children staggered 60ms apart */
-[".props",".ritual",".press",".newsletter",".spotlight","#shelf .sec-head","#reviews .sec-head"].forEach(sel=>
+[".props",".ritual",".newsletter",".spotlight","#shelf .sec-head","#reviews .sec-head"].forEach(sel=>
   document.querySelectorAll(sel).forEach(el=>el.classList.add("reveal")));
 document.querySelectorAll("#reviews .review").forEach((el,i)=>{ el.classList.add("reveal"); el.style.transitionDelay = (i*60)+"ms"; });
 document.querySelectorAll("#featGrid .card").forEach((el,i)=>{ el.classList.add("reveal"); el.style.transitionDelay = (i*60)+"ms"; });
@@ -1308,6 +1326,13 @@ const revIO = new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){ e.target.classList.add("in"); revIO.unobserve(e.target); }
 }),{threshold:.12});
 document.querySelectorAll(".reveal").forEach(el=>revIO.observe(el));
+
+/* sticky mobile CTA — appears once the hero scrolls away, home view only */
+const sCta = document.getElementById("stickyCta");
+addEventListener("scroll", ()=>{
+  const onHome = document.getElementById("view-home").classList.contains("active");
+  sCta.classList.toggle("show", onHome && scrollY > 560);
+}, {passive:true});
 
 /* PDP gallery — cursor 3D tilt (±6°), settles back on leave */
 const gal = document.getElementById("galleryMain");
